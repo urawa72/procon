@@ -14,17 +14,37 @@ typedef long long ll;
 
 int main() {
     int n, m; cin >> n >> m;
-    vector<int> p(m);
-    vector<vector<int> > v(m, vector<int>(m));
+    vector<vector<int> > v(m);
     rep(i, m){
         int k; cin >> k;
+        v[i].resize(k);
         rep(j, k){
             cin >> v[i][j];
+            v[i][j]--;
         }
     }
+    vector<int> p(m);
     rep(i, m) cin >> p[i];
 
-    rep(i, m){
-        
+    int ans = 0;
+    // ビット全探索でスイッチon/offの組み合わせを全て試す
+    for(int bit = 0; bit < (1 << n); bit++){
+        bool flag = true;
+        for(int j = 0; j < m; j++){
+            int cnt = 0;
+            for(int k : v[j]){
+                // スイッチon/off組み合わせビット列とスイッチonのビット列とのand演算
+                if(bit & (1 << k)) {
+                    cnt++;
+                }
+            }
+            cnt %= 2;
+            if(cnt != p[j]){
+                flag = false;
+                break;
+            }
+        }
+        if(flag) ans++;
     }
+    cout << ans << endl;
 }
