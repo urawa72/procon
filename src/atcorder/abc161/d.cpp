@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#include <vector>
 using namespace std;
 
 #define all(v) v.begin(), v.end()
@@ -14,4 +15,30 @@ typedef long long ll;
 
 int main() {
     int k; cin >> k;
+    vector<ll> a;
+    // 1 ~ 9 までをいれる
+    for(int i = 1; i <= 9; i++) a.push_back(i);
+    while(1){
+        // kに達してたら出力
+        if(k <= a.size()){
+            cout << a[k - 1] << endl;
+            return 0;
+        }
+        // 1 ~ 9までの分は引いておく
+        k -= a.size();
+        vector<ll> old;
+        swap(old, a);
+        for(ll x : old){
+            // 今の数字の末尾に-1, 0, +1のいずれか追加
+            for(int i = -1; i <= 1; i++){
+                // 末尾に付け足す数字を求める
+                int d = x % 10 + i;
+                // 0 ~ 9でなければスルー
+                if(d < 0 || d > 9) continue;
+                // 今の桁を繰り上げて末尾の数字を足す
+                ll nx = x * 10 + d;
+                a.push_back(nx);
+            }
+        }
+    }
 }
