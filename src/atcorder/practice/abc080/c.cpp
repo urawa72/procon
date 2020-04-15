@@ -2,31 +2,40 @@
 using namespace std;
 
 #define all(v) v.begin(), v.end()
-#define rep(i, n) REP(i, 0, n)
-#define REP(i, x, n) for (int i = x; i < n; i++)
-#define REPE(i, x, n) for (int i = x; i <= n; i++)
-#define OP(x) cout << x << endl;
-template<typename T> T gcd(T a, T b) { return b ? gcd(b, a % b) : a; }
-template<typename T> T lcm(T a, T b) { return a / gcd(a, b) * b; }
-template<class T> void chmax(T& a, T b) { if(a > b) a = b; }
-template<class T> void chmin(T& a, T b) { if(a < b) b = a; }
+#define rep(i, n) for (int i = 0; i < n; i++)
 typedef long long ll;
 
 int main() {
-    // string s; cin >> s;
-    // int sum = 0;
-    // for(int i = 0; i < s.size(); i++){
-    //     sum += s[i] - '0';
-    // }
-    // if(stoi(s) % sum == 0) cout << "Yes" << endl;
-    // else cout << "No" << endl;
     int n; cin >> n;
-    int t = n, c = 0;
-    while(t > 0){
-        c += t % 10;
-        t /= 10;
+    vector<vector<int> > f(n, vector<int>(10));
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j < 10; j++){
+            cin >> f[i][j];
+        }
     }
-    if(n % c == 0) cout << "Yes" << endl;
-    else cout << "No" << endl;
+    vector<vector<ll> > p(n, vector<ll>(11));
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j < 11; j++){
+            cin >> p[i][j];
+        }
+    }
 
+    // あらかじめ最低値-10^7を設定しておく
+    ll ans = -(1 << 30);
+    // bit全探索で2^10のパターン試す
+    for(int bit = 1; bit < (1 << 10); bit++){
+        int cc = 0;
+        for(int i = 0; i < n; i++){
+            int c = 0;
+            // bit列が1で店舗も1だったら店舗カウントをインクリメント
+            for(int j = 0; j < 10; j++){
+                if(bit & (1 << j) && f[i][j]) c++;
+            }
+            // 店舗カウント数に応じた利益
+            cc += p[i][c];
+        }
+        // 最大の値を設定する
+        if(ans < cc) ans = cc;
+    }
+    cout << ans << endl;
 }
