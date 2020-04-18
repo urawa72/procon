@@ -13,4 +13,6 @@
 - [ARC061 C - たくさんの数式](https://atcoder.jp/contests/abc045/tasks/arc061_a)
 
 # DFS
+- [ATC001 A - 深さ優先探索](https://atcoder.jp/contests/atc001/tasks/dfs_a)
+- [ABC054 C - One-stroke Path](https://atcoder.jp/contests/abc054/tasks/abc054_c)
 - [ABC114 C - 755](https://atcoder.jp/contests/abc114/tasks/abc114_c)
