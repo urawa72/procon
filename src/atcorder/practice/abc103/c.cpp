@@ -6,14 +6,11 @@ using namespace std;
 typedef long long ll;
 
 int main() {
-    int n, k; cin >> n >> k;
-    vector<int> a(n);
+    int n; cin >> n;
+    ll sum = 0;
     for(int i = 0; i < n; i++){
-        cin >> a[i];
+        int a; cin >> a;
+        sum += a;
     }
-    int ans = 0;
-    for(int i = 0; i < n - 1; i+=k-1){
-        ans++;
-    }
-    cout << ans << endl;
+    cout << sum - n << endl;
 }
