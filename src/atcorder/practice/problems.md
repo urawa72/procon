@@ -1,7 +1,4 @@
 # 分野別
-## reference articles
-- [最強最速アルゴリズマー養成講座](https://www.itmedia.co.jp/keywords/algorithmer.html)
-
 ## gcd/lcm
 - [ABC070 C - Multiple Clocks](https://atcoder.jp/contests/abc070/tasks/abc070_c)
 - [ABC109 C - Skip](https://atcoder.jp/contests/abc109/tasks/abc109_c)
@@ -31,6 +28,7 @@
 ## 累積和
 - [ABC098 C](https://atcoder.jp/contests/abc098/tasks/arc098_a)
 
+
 # 再チャレンジ問題
 - [ABC117 C](https://atcoder.jp/contests/abc117/tasks/abc117_c)
 - [ABC116 C](https://atcoder.jp/contests/abc116/tasks/abc116_c)
@@ -40,3 +38,6 @@
 - [ABC094 C](https://atcoder.jp/contests/abc094/tasks/arc095_a)
 - [ABC093 C](https://atcoder.jp/contests/abc093/tasks/arc094_a)
 - [ABC092 C](https://atcoder.jp/contests/abc092/tasks/arc093_a)
+- [ABC082 C](https://atcoder.jp/contests/abc082/tasks/arc087_a)
+- [ABC081 C](https://atcoder.jp/contests/abc081/tasks/arc086_a)
+- [ABC071 C](https://atcoder.jp/contests/abc071/tasks/arc081_a)
