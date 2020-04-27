@@ -41,3 +41,4 @@
 - [ABC082 C](https://atcoder.jp/contests/abc082/tasks/arc087_a)
 - [ABC081 C](https://atcoder.jp/contests/abc081/tasks/arc086_a)
 - [ABC071 C](https://atcoder.jp/contests/abc071/tasks/arc081_a)
+- [ABC065 C](https://atcoder.jp/contests/abc065/tasks/arc076_a)
