@@ -3,12 +3,17 @@ using namespace std;
 
 #define all(v) v.begin(), v.end()
 typedef long long ll;
+const int INT_INF = 1e9;
+const ll INF = 1LL << 30;
 
 int main() {
-    string s; cin >> s;
+    ll x; cin >> x;
+    ll y = 100;
     ll cnt = 0;
-    for(int i = 1; i < s.size(); i++){
-        if(s[i - 1] != s[i]) cnt++;
+    while(1){
+        y += (y / 100);
+        cnt++;
+        if(x <= y) break;
     }
     cout << cnt << endl;
 }
