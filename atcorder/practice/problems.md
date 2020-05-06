@@ -28,6 +28,9 @@
 ## 累積和
 - [ABC098 C](https://atcoder.jp/contests/abc098/tasks/arc098_a)
 
+## 二分探索
+- [ABC030 C](https://atcoder.jp/contests/abc030/tasks/abc030_c)
+
 
 # 再チャレンジ問題
 - [ABC117 C](https://atcoder.jp/contests/abc117/tasks/abc117_c)
@@ -55,3 +58,5 @@
 - [ABC033 C](https://atcoder.jp/contests/abc033/tasks/abc033_c)
 - [ABC031 C](https://atcoder.jp/contests/abc031/tasks/abc031_c)
 - [ABC030 B](https://atcoder.jp/contests/abc030/tasks/abc030_b)
+- [ABC027 B](https://atcoder.jp/contests/abc027/tasks/abc027_b)
+- [ABC024 C](https://atcoder.jp/contests/abc024/tasks/abc024_c)
