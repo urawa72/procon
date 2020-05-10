@@ -63,3 +63,5 @@
 - [ABC024 C](https://atcoder.jp/contests/abc024/tasks/abc024_c)
 - [ABC019 C](https://atcoder.jp/contests/abc019/tasks/abc019_3)
 - [ABC016 C](https://atcoder.jp/contests/abc016/tasks/abc016_3)
+- [ABC011 C](https://atcoder.jp/contests/abc011/tasks/abc011_3)
+- [ABC006 C](https://atcoder.jp/contests/abc006/tasks/abc006_3)
