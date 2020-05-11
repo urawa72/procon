@@ -1,0 +1,380 @@
+SpecialKey	
+	SpecialKey
+EndOfBuffer	
+	EndOfBuffer
+NonText	
+	NonText
+Directory	
+	Directory
+ErrorMsg	
+	ErrorMsg
+IncSearch	
+	IncSearch
+Search	
+	Search
+MoreMsg	
+	MoreMsg
+ModeMsg	
+	ModeMsg
+LineNr	
+	LineNr
+CursorLineNr	
+	CursorLineNr
+Question	
+	Question
+StatusLine	
+	StatusLine CtrlPMode2
+StatusLineNC	
+	StatusLineNC
+VertSplit	
+	VertSplit
+Title	
+	Title pythonFunction rubyFunction vimFunction vimFuncSID CtrlPMatch
+	deniteMatchedChar elixirFunctionDeclaration jsClassFuncName jsFuncName
+	jsObjectFuncName
+Visual	
+	Visual
+VisualNOS	
+	VisualNOS
+WarningMsg	
+	WarningMsg
+WildMenu	
+	WildMenu
+Folded	
+	Folded
+FoldColumn	
+	FoldColumn
+DiffAdd	
+	DiffAdd
+DiffChange	
+	DiffChange
+DiffDelete	
+	DiffDelete
+DiffText	
+	DiffText
+SignColumn	
+	SignColumn
+Conceal	
+	Conceal
+SpellBad	
+	SpellBad
+SpellCap	
+	SpellCap
+SpellRare	
+	SpellRare
+SpellLocal	
+	SpellLocal
+Pmenu	
+	Pmenu
+PmenuSel	
+	PmenuSel
+PmenuSbar	
+	PmenuSbar
+PmenuThumb	
+	PmenuThumb
+TabLine	
+	TabLine
+TabLineSel	
+	TabLineSel ToolbarButton
+TabLineFill	
+	TabLineFill ToolbarLine
+CursorColumn	
+	CursorColumn
+CursorLine	
+	CursorLine
+ColorColumn	
+	ColorColumn
+QuickFixLine	
+	QuickFixLine
+StatusLineTerm	
+	StatusLineTerm
+StatusLineTermNC	
+	StatusLineTermNC
+Normal	
+	Normal cssClassNameDot jsonQuote shFunction vimFuncVar vimVar
+	deniteMatched elixirModuleDeclaration jsFlowMaybe jsFlowObject
+	graphqlName graphqlOperator jsClassDefinition jsFuncCall plug1
+	StartifySpecial swiftIdentifier typescriptAjaxMethods typescriptBraces
+	typescriptEndColons typescriptHtmlElemProperties typescriptMessage
+	typescriptParens LspInformationText LspHintText LspInformationHighlight
+	LspHintHighlight
+MatchParen	
+	MatchParen
+Comment	
+	Comment rubySharpBang vimContinue gitmessengerHash
+	markdownHeadingDelimiter markdownRule plugDash StartifyBracket
+	StartifyPath StartifySlash
+Constant	
+	Constant Character Number Boolean Float helpHyperTextJump htmlArg
+	xmlAttrib gitmessengerHistory jsNull jsUndefined StartifyFooter
+	StartifyHeader typescriptNull
+Special	
+	Special Tag SpecialChar SpecialComment Debug cssClassName
+	cssPseudoClassId sassClass vimMapModKey jsTemplateBraces markdownBold
+	plugMessage StartifyNumber
+Identifier	
+	Identifier phpVarSelector vimHiTerm vimOption jsObjectKey plug2
+	StartifyFile
+Statement	
+	Statement Conditional Repeat Label Keyword Exception cssTagName
+	htmlEndTag htmlTag rubyDefine vimGroup vimHiGroup xmlAttribPunct
+	xmlEndTag xmlNamespace xmlTag xmlTagName elixirBlockDefinition
+	elixirDefine elixirExUnitMacro elixirExceptionDefine elixirKeyword
+	elixirModuleDefine elixirPrivateDefine gitmessengerHeader jsExport
+	jsFutureKeys jsGlobalObjects jsModuleKeywords jsModuleOperators jsSuper
+	ngxDirective StartifySection typescriptFuncKeyword
+	typescriptGlobalObjects typescriptIdentifier
+PreProc	
+	PreProc Define Macro PreCondit jsFlowType
+Type	
+	Type Typedef
+Underlined	
+	Underlined
+Error	
+	Error LspErrorText LspErrorHighlight
+Todo	
+	Todo LspWarningText LspWarningHighlight
+String	
+	String rubyInterpolationDelimiter rubyStringDelimiter
+	elixirDocSigilDelimiter elixirDocTest elixirStringDelimiter
+	markdownCode markdownCodeDelimiter
+Function	
+	Function
+Operator	
+	Operator jsArrowFunction
+Include	
+	Include
+StorageClass	
+	StorageClass
+Structure	
+	Structure
+Delimiter	
+	Delimiter cssBraces yamlKeyValueDelimiter svssBraces
+Cursor	
+	Cursor TermCursor CtrlPPrtCursor
+TermCursorNC	
+	TermCursorNC
+diffAdded	
+	diffAdded
+diffRemoved	
+	diffRemoved
+ALEErrorSign	
+	ALEErrorSign
+ALEWarningSign	
+	ALEWarningSign
+ALEVirtualTextError	
+	ALEVirtualTextError
+ALEVirtualTextWarning	
+	ALEVirtualTextWarning
+CtrlPMode1	
+	CtrlPMode1
+EasyMotionShade	
+	EasyMotionShade
+EasyMotionTarget	
+	EasyMotionTarget
+EasyMotionTarget2First	
+	EasyMotionTarget2First
+EasyMotionTarget2Second	
+	EasyMotionTarget2Second
+GitGutterAdd	
+	GitGutterAdd SignifySignAdd
+GitGutterChange	
+	GitGutterChange SignifySignChange
+GitGutterChangeDelete	
+	GitGutterChangeDelete SignifySignChangeDelete
+GitGutterDelete	
+	GitGutterDelete SignifySignDelete SignifySignDeleteFirstLine
+gitmessengerEndOfBuffer	
+	gitmessengerEndOfBuffer
+gitmessengerPopupNormal	
+	gitmessengerPopupNormal
+Sneak	
+	Sneak
+SneakScope	
+	SneakScope
+SyntasticErrorSign	
+	SyntasticErrorSign
+SyntasticStyleErrorSign	
+	SyntasticStyleErrorSign
+SyntasticStyleWarningSign	
+	SyntasticStyleWarningSign
+SyntasticWarningSign	
+	SyntasticWarningSign
+ZenSpace	
+	ZenSpace
+icebergALAccentRed	
+	icebergALAccentRed
+IndentGuidesEven	
+	IndentGuidesEven
+ExtraWhitespace	
+	ExtraWhitespace
+airline_x_inactive	
+	airline_x_inactive
+airline_x_inactive_bold	
+	airline_x_inactive_bold
+airline_x_inactive_red	
+	airline_x_inactive_red
+airline_y_inactive	
+	airline_y_inactive
+airline_y_inactive_bold	
+	airline_y_inactive_bold
+airline_y_inactive_red	
+	airline_y_inactive_red
+airline_z_inactive	
+	airline_z_inactive
+airline_z_inactive_bold	
+	airline_z_inactive_bold
+airline_z_inactive_red	
+	airline_z_inactive_red
+airline_term_inactive	
+	airline_term_inactive
+airline_term_inactive_bold	
+	airline_term_inactive_bold
+airline_term_inactive_red	
+	airline_term_inactive_red
+airline_error_inactive	
+	airline_error_inactive
+airline_error_inactive_bold	
+	airline_error_inactive_bold
+airline_error_inactive_red	
+	airline_error_inactive_red
+airline_a_inactive	
+	airline_a_inactive
+airline_a_inactive_bold	
+	airline_a_inactive_bold
+airline_a_inactive_red	
+	airline_a_inactive_red
+airline_b_inactive	
+	airline_b_inactive
+airline_b_inactive_bold	
+	airline_b_inactive_bold
+airline_b_inactive_red	
+	airline_b_inactive_red
+airline_c_inactive	
+	airline_c_inactive
+airline_c_inactive_bold	
+	airline_c_inactive_bold
+airline_c_inactive_red	
+	airline_c_inactive_red
+airline_warning_inactive	
+	airline_warning_inactive
+airline_warning_inactive_bold	
+	airline_warning_inactive_bold
+airline_warning_inactive_red	
+	airline_warning_inactive_red
+airline_x	
+	airline_x
+airline_x_bold	
+	airline_x_bold
+airline_x_red	
+	airline_x_red
+airline_y	
+	airline_y
+airline_y_bold	
+	airline_y_bold
+airline_y_red	
+	airline_y_red
+airline_z	
+	airline_z
+airline_z_bold	
+	airline_z_bold
+airline_z_red	
+	airline_z_red
+airline_term	
+	airline_term
+airline_term_bold	
+	airline_term_bold
+airline_term_red	
+	airline_term_red
+airline_error	
+	airline_error
+airline_error_bold	
+	airline_error_bold
+airline_error_red	
+	airline_error_red
+airline_a	
+	airline_a
+airline_a_bold	
+	airline_a_bold
+airline_a_red	
+	airline_a_red
+airline_b	
+	airline_b
+airline_b_bold	
+	airline_b_bold
+airline_b_red	
+	airline_b_red
+airline_c	
+	airline_c
+airline_c_bold	
+	airline_c_bold
+airline_c_red	
+	airline_c_red
+airline_warning	
+	airline_warning
+airline_warning_bold	
+	airline_warning_bold
+airline_warning_red	
+	airline_warning_red
+CtrlPwhite	
+	CtrlPwhite
+CtrlPlight	
+	CtrlPlight
+CtrlPdark	
+	CtrlPdark
+CtrlParrow1	
+	CtrlParrow1
+CtrlParrow2	
+	CtrlParrow2
+CtrlParrow3	
+	CtrlParrow3
+airline_tablabel	
+	airline_tablabel
+airline_tab	
+	airline_tab
+airline_tabsel	
+	airline_tabsel
+airline_tabtype	
+	airline_tabtype
+airline_tabfill	
+	airline_tabfill
+airline_tabmod	
+	airline_tabmod
+airline_tabmod_unsel	
+	airline_tabmod_unsel
+airline_tabhid	
+	airline_tabhid
+airline_tablabel_right	
+	airline_tablabel_right
+airline_tab_right	
+	airline_tab_right
+airline_tabsel_right	
+	airline_tabsel_right
+airline_tabmod_right	
+	airline_tabmod_right
+airline_tabhid_right	
+	airline_tabhid_right
+airline_tabmod_unsel_right	
+	airline_tabmod_unsel_right
+airline_a_to_airline_b	
+	airline_a_to_airline_b
+airline_b_to_airline_c	
+	airline_b_to_airline_c
+airline_c_to_airline_x	
+	airline_c_to_airline_x
+airline_x_to_airline_y	
+	airline_x_to_airline_y
+airline_y_to_airline_z	
+	airline_y_to_airline_z
+airline_z_to_airline_warning	
+	airline_z_to_airline_warning
+airline_warning_to_airline_error	
+	airline_warning_to_airline_error
+airline_c1_inactive	
+	airline_c1_inactive
+airline_tabfill_to_airline_tabfill	
+	airline_tabfill_to_airline_tabfill
+airline_tabfill_to_airline_tablabel_right	
+	airline_tabfill_to_airline_tablabel_right
+airline_tabsel_to_airline_tabfill	
+	airline_tabsel_to_airline_tabfillA
