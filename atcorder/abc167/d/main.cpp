@@ -14,25 +14,22 @@ int main() {
     V<ll> a(n + 1);
     for(ll i = 1; i <= n; i++) cin >> a[i];
 
-    V<ll> tmp(n + 1);
-    V<ll> b;
-    ll next = a[1];
-    tmp[1]++;
-    tmp[next]++;
-    ll cnt = 0, p = 1;
+    V<bool> visit(n + 1);
+    V<ll> root;
+    ll now = 1;
     while(1){
-        next = a[next];
-        tmp[next]++;
-        if(tmp[next] > 2) break;
-        cnt++;
-        if(tmp[next] == 2){
-            b.push_back(next);
-            p++;
-        }
+        if(visit[now]) break;
+        root.push_back(now);
+        visit[now] = true;
+        now = a[now];
     }
-    ll y = k - (cnt - p);
 
-    ll x = y % (p - 1);
-    cout << b[x + 1] << endl;
+    // ループのスタート地点
+    int s = find(all(root), now) - root.begin();
+    // ループの周期
+    int r = (int)root.size() - s;
+
+    if(k < s) cout << root[k] << endl; // ループに到達しない場合
+    else cout << root[(k - s) % r + s] << endl; // スタート地点までを引いて剰余で求める
 
 }
