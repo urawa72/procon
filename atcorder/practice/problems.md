@@ -34,8 +34,6 @@
 
 
 # 再チャレンジ問題
-- [ABC117 C](https://atcoder.jp/contests/abc117/tasks/abc117_c)
-- [ABC116 C](https://atcoder.jp/contests/abc116/tasks/abc116_c)
 - [ABC106 C](https://atcoder.jp/contests/abc106/tasks/abc106_c)
 - [ABC103 C](https://atcoder.jp/contests/abc103/tasks/abc103_c)
 - [ABC100 C](https://atcoder.jp/contests/abc100/tasks/abc100_c)
