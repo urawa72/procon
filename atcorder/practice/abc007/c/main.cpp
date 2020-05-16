@@ -7,7 +7,7 @@ using namespace std;
 #define M map
 typedef long long ll;
 
-// グリッド上の幅優先探索による最短経路
+// グリッド上のBFS 幅優先探索による最短経路
 int main() {
     const int dx[] = {0, 0, 1, -1};
     const int dy[] = {1, -1, 0, 0};
