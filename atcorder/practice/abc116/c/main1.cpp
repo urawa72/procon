@@ -16,6 +16,8 @@ int main() {
     for(int i = 0; i < n; i++){
         cin >> h[i];
     }
+
+    // 区間集計
     int ans = h[0];
     for(int l = 0; l < n; l++){
         // 左端から0になるまで水やりしていく
