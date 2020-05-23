@@ -12,6 +12,7 @@ int main() {
     V<ll> a(n);
     for(int i = 0; i < n; i++) cin >> a[i];
 
+    // XOR
     ll ans = 0, two = 1;
     for(int i = 0; i < 60; i++){
         ll zero = 0, one = 0;
