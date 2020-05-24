@@ -2,26 +2,32 @@
 using namespace std;
 
 #define all(v) v.begin(), v.end()
+#define V vector
+#define P pair
 typedef long long ll;
+const int INT_INF = 1e9;
+const ll INF = 1LL << 30;
 
 int main() {
     ll n, x; cin >> n >> x;
-    vector<ll> a(n);
+    V<ll> a(n);
     for(int i = 0; i < n; i++) cin >> a[i];
 
-    ll ans = 0;
-    // 最初がxより大きかったら減らす
-    // これをしないとa[i + 1]が負の値になる場合がある
-    if(a[0] > x){
-        ans += a[0] - x;
-        a[0] = x;
-    }
-    for(int i = 1; i < n; i++){
-        if(a[i] + a[i - 1] > x){
-            ll tmp = a[i] + a[i - 1] - x;
-            ans += tmp;
-            a[i] -= tmp;
+    ll cnt = 0;
+    for(int i = 0; i < n - 1; i++){
+        ll sum = a[i] + a[i + 1];
+        if(sum > x){
+            ll tmp = sum - x;
+            cnt += tmp;
+            if(tmp <= a[i + 1]){
+                a[i + 1] -= tmp;
+            }else{
+                tmp -= a[i + 1];
+                a[i + 1] = 0;
+                a[i] -= tmp;
+            }
         }
     }
-    cout << ans << endl;
+    cout << cnt << endl;
+
 }

@@ -6,48 +6,39 @@ using namespace std;
 #define P pair
 typedef long long ll;
 
-const int MOD = 1e9 + 7;
-const int MAX = 2 * 10e5 + 1;
+const ll MOD = 1e9 + 7;
 
-template<typename T>
-T modPow(T x, T n, const T &mod){
-    T res = 1;
-    while(n > 0){
-        if(n & 1) (res *= x) %= mod;
-        (x *= x) %= mod;
-        n >>= 1; // nを1bit左にずらす
-    }
-    return res;
+// 繰り返し二乗法
+ll modPow(ll x, ll a){
+    if(a == 1) return x;
+    if(a % 2) return (x * modPow(x, a - 1)) % MOD;
+    ll t = modPow(x, a / 2);
+    return (t * t) % MOD;
 }
 
-V<ll> finv, inv, Com;
-void COMinit(){
-    finv[0] = finv[1] = 1;
-    inv[1] = 1;
-    for (int i = 2; i < MAX; i++){
-        inv[i] = MOD - inv[MOD % i] * (MOD / i) % MOD;
-        finv[i] = finv[i - 1] * inv[i] % MOD;
-    }
+ll modInv(ll x){
+    return modPow(x, MOD - 2);
 }
 
-ll COM(ll n, ll k){
-    if(n < k) return 0;
-    if(n < 0 || k < 0) return 0;
-    ll res = 1;
-    for(int i = n; i >= n - k + 1; i--){
-        res = res * i % MOD;
+ll modPerm(ll n, ll k){
+    ll ret = 1;
+    for(int i = 0; i < k; i++){
+        ret = (ret * (n - i)) % MOD;
     }
-    return res * finv[k] % MOD;
+    return ret;
 }
 
+ll modComb(ll n, ll k){
+    ll a, b;
+    a = modPerm(n, k);
+    b = modPerm(k, k);
+    return (a * modInv(b)) % MOD;
+}
 
 int main() {
     ll n, a, b; cin >> n >> a >> b;
-    finv.resize(MAX);
-    inv.resize(MAX);
-    COMinit();
 
-    ll ans = (modPow<ll>(2, n, MOD) - 1 - COM(n, a) - COM(n, b)) % MOD;
+    ll ans = (modPow(2, n) - 1 - modComb(n, a) - modComb(n, b)) % MOD;
     ans = (ans + MOD) % MOD;
     cout << ans << endl;
 }
