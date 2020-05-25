@@ -1,38 +1,33 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define all(v) v.begin(), v.end()
+#define ALL(v) v.begin(), v.end()
+#define V vector
+#define P pair
 typedef long long ll;
+const int INT_INF = 1e9;
+const ll INF = 1LL << 30;
+const ll MOD = 1e9 + 7;
+
 
 int main() {
     string s; cin >> s;
     int t; cin >> t;
-    int n = s.size();
-
-    map<char, int> m;
-    for(int i = 0; i < n; i++){
-        m[s[i]]++;
+    int x = 0, y = 0, cnt = 0;
+    for(int i = 0; i < (int)s.size(); i++){
+        if(s[i] == 'L') x--;
+        if(s[i] == 'R') x++;
+        if(s[i] == 'U') y++;
+        if(s[i] == 'D') y--;
+        if(s[i] == '?') cnt++;
     }
 
-    int x = m['R'] - m['L'];
-    int y = m['U'] - m['D'];
-
-    // マンハッタン距離
-    x = abs(x);
-    y = abs(y);
-    int ans = x + y;
-
+    int sum = abs(x) + abs(y);
     if(t == 1){
-        // 最大値
-        // ?分足すだけ
-        ans += m['?'];
+        cout << sum + cnt << endl;
     }else{
-        // 最小値
-        // ?の数がマンハッタン距離より大きい場合
-        // 差が奇数なら1、偶数なら0
-        if(ans < m['?']) ans = (ans - m['?']) & 1;
-        // 小さければ引くだけ
-        else ans -= m['?'];
+        if(sum < cnt) sum = (sum - cnt) & 1, cout << sum << endl;
+        else cout << sum - cnt << endl;
     }
-    cout << ans << endl;
+
 }
