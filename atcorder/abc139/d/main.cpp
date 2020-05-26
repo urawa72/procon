@@ -11,5 +11,7 @@ const ll MOD = 1e9 + 7;
 
 
 int main() {
-    k
+    ll n; cin >> n;
+
+    cout << (n * (n - 1)) / 2 << endl;
 }
