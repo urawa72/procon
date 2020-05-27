@@ -2,17 +2,17 @@
 #include <utility>
 using namespace std;
 
-#define all(v) v.begin(), v.end()
+#define ALL(v) v.begin(), v.end()
 #define V vector
 #define P pair
-#define M map
 typedef long long ll;
 const int INT_INF = 1e9;
 const ll INF = 1LL << 30;
+const ll MOD = 1e9 + 7;
 
+// 貪欲法
 int main() {
     ll n, d, k; cin >> n >> d >> k;
-
     V<P<ll, ll> > v(d);
     for(int i = 0; i < d; i++){
         ll l, r; cin >> l >> r;
@@ -21,30 +21,40 @@ int main() {
 
     V<P<ll, ll> > w(k);
     for(int i = 0; i < k; i++){
-        ll s, t; cin >> s >> t;
-        w[i] = make_pair(s, t);
+        ll s, g; cin >> s >> g;
+        w[i] = make_pair(s, g);
     }
 
-    for(ll i = 0; i < k; i++){
-        ll s = w[i].first, g = w[i].second;
-        ll ans = INF;
-        for(ll j = 0; j < d; j++){
-            ll l = v[j].first, r = v[j].second;
-            if(s < g){
-                if(l <= s && s <= r && g <= r){
-                    ans = min(ans, j + 1);
-                }else if(l <= s && s <= r){
-                    s = r;
+    for(int i = 0; i < k; i++){
+        int ans = 0;
+        // スタートとゴールどっちが大きいかのフラグ
+        bool flag1 = w[i].first < w[i].second ? 1 : 0;
+        // ゴール判定フラグ
+        bool flag2 = false;
+        for(int j = 0; j < d; j++){
+            // 移動可能であれば可能な限り移動
+            if(v[j].first <= w[i].first && w[i].first <= v[j].second){
+                // スタートとゴールどちらが大きかによって更新する値が変わる
+                if(flag1) w[i].first = v[j].second;
+                else w[i].first = v[j].first;
+            }
+
+            if(flag1){
+                // スタートがゴール以上になってたら終了
+                if(w[i].second <= w[i].first){
+                    ans = j + 1;
+                    flag2 = true;
                 }
             }else{
-                if(s <= r && l <= s && l <= g){
-                    ans = min(ans, j + 1);
-                }else if(l <= s && s <= r){
-                    s = l;
+                // ゴールの方が小さい時は逆の判定
+                if(w[i].first <= w[i].second){
+                    ans = j + 1;
+                    flag2 = true;
                 }
             }
+
+            if(flag2) break;
         }
         cout << ans << endl;
     }
-
 }
