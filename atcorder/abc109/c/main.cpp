@@ -16,19 +16,13 @@ int main() {
     ll n, x; cin >> n >> x;
     V<ll> v(n);
     for(int i = 0; i < n; i++) cin >> v[i];
+    v.push_back(x);
+    sort(ALL(v));
 
-    V<ll> w(n);
-    for(int i = 1; i < n; i++){
-        if(x <= v[i]){
-            w.push_back(v[i] - x);
-            w.push_back(x - v[i - 1]);
-        }else{
-            w.push_back(v[i] - v[i - 1]);
-        }
+    ll g = v[1] - v[0];
+    for(int i = 2; i < n + 1; i++){
+        g = gcd(g, (v[i] - v[i - 1]));
     }
-
-    for(int i = 0; i < w.size(); i++){
-
-    }
+    cout << g << endl;
 
 }

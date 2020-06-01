@@ -9,7 +9,6 @@ const int INT_INF = 1e9;
 const ll INF = 1LL << 30;
 const ll MOD = 1e9 + 7;
 
-
 int main() {
     ll n, k; cin >> n >> k;
     V<ll> a(n);
