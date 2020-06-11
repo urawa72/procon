@@ -1,32 +1,47 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define all(v) v.begin(), v.end()
+#define ALL(v) v.begin(), v.end()
 #define V vector
 #define P pair
 typedef long long ll;
 const int INT_INF = 1e9;
 const ll INF = 1LL << 30;
+const ll MOD = 1e9 + 7;
 
+
+// 文字種類が異なればNo
+// 文字種類が同じだが各文字数が完全一致しなければNo
 int main() {
     string s, t; cin >> s >> t;
 
-    // 同じ文字は同じ文字に変換されるのを
-    // s -> t, t -> sで調べる
-    V<char> v1(100), v2(100);
-    for(int i = 0; i < s.size(); i++){
-        if(v1[t[i] - 'a'] == 0){
-            v1[t[i] - 'a'] = s[i];
-        }else if(v1[t[i] - 'a'] != s[i]){
-            cout << "No" << endl;
-            return 0;
-        }
-        if(v2[s[i] - 'a'] == 0){
-            v2[s[i] - 'a'] = t[i];
-        }else if(v2[s[i] - 'a'] != t[i]){
+    int n = s.size();
+
+    map<char, int> m1, m2;
+    for(int i = 0; i < n; i++){
+        m1[s[i]]++;
+        m2[t[i]]++;
+    }
+
+    if(m1.size() != m2.size()){
+        cout << "No" << endl;
+        return 0;
+    }
+
+    V<int> v1, v2;
+    for(auto p : m1) v1.push_back(p.second);
+    for(auto p : m2) v2.push_back(p.second);
+
+    sort(ALL(v1));
+    sort(ALL(v2));
+
+    for(int i = 0; i < (int)v1.size(); i++){
+        if(v1[i] == v2[i]) continue;
+        else{
             cout << "No" << endl;
             return 0;
         }
     }
     cout << "Yes" << endl;
+
 }
