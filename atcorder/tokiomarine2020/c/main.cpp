@@ -1,5 +1,4 @@
 #include <bits/stdc++.h>
-#include <numeric>
 using namespace std;
 
 #define ALL(v) v.begin(), v.end()
@@ -12,20 +11,13 @@ const ll MOD = 1e9 + 7;
 
 
 int main() {
-    int n; cin >> n;
+    ll n, k; cin >> n >> k;
     V<ll> a(n);
     for(int i = 0; i < n; i++){
         ll x; cin >> x;
-        x = x - (i + 1);
         a[i] = x;
     }
 
-    sort(ALL(a));
-    ll m = a[n / 2];
-    ll ans = 0;
-    for(int i = 0; i < n; i++){
-        ans += abs(a[i] - m);
-    }
-    cout << ans << endl;
+
     return 0;
 }
