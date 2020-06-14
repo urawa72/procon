@@ -1,4 +1,6 @@
 #include <bits/stdc++.h>
+#include <cctype>
+#include <locale>
 using namespace std;
 
 #define ALL(v) v.begin(), v.end()
@@ -11,17 +13,11 @@ const ll MOD = 1e9 + 7;
 
 
 int main() {
-    ll a, v, b, w, t; cin >> a >> v >> b >> w >> t;
-    if(v <= w){
-        cout << "NO" << endl;
-        return 0;
-    }
+    char C, c; cin >> C >> c;
 
-    if(abs(a - b) <= (v - w) * t){
-        cout << "YES" << endl;
-    }else{
-        cout << "NO" << endl;
-    }
+    if('Z' - C == 'z' - c) cout << "Yes" << endl;
+    else cout << "No" << endl;
+
 
     return 0;
 }

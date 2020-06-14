@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#include <string>
 using namespace std;
 
 #define ALL(v) v.begin(), v.end()
@@ -11,17 +12,13 @@ const ll MOD = 1e9 + 7;
 
 
 int main() {
-    ll a, v, b, w, t; cin >> a >> v >> b >> w >> t;
-    if(v <= w){
-        cout << "NO" << endl;
-        return 0;
-    }
+    string s; cin >> s;
 
-    if(abs(a - b) <= (v - w) * t){
-        cout << "YES" << endl;
-    }else{
-        cout << "NO" << endl;
+    string ans;
+    for(int i = 0; i < (int)s.size(); i++){
+        if('0' <= s[i] && s[i] <= '9') ans += s[i];
     }
+    cout << ans << endl;
 
     return 0;
 }

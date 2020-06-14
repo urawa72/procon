@@ -11,17 +11,9 @@ const ll MOD = 1e9 + 7;
 
 
 int main() {
-    ll a, v, b, w, t; cin >> a >> v >> b >> w >> t;
-    if(v <= w){
-        cout << "NO" << endl;
-        return 0;
-    }
+    int h, w; cin >> h >> w;
 
-    if(abs(a - b) <= (v - w) * t){
-        cout << "YES" << endl;
-    }else{
-        cout << "NO" << endl;
-    }
+    cout << h * (w - 1) + w * (h - 1) << endl;
 
     return 0;
 }

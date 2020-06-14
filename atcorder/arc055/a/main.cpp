@@ -11,17 +11,11 @@ const ll MOD = 1e9 + 7;
 
 
 int main() {
-    ll a, v, b, w, t; cin >> a >> v >> b >> w >> t;
-    if(v <= w){
-        cout << "NO" << endl;
-        return 0;
-    }
-
-    if(abs(a - b) <= (v - w) * t){
-        cout << "YES" << endl;
-    }else{
-        cout << "NO" << endl;
-    }
+    ll n; cin >> n;
+    string ans = "1";
+    for(int i = 0; i < n - 1; i++) ans += '0';
+    ans += '7';
+    cout << ans << endl;
 
     return 0;
 }
