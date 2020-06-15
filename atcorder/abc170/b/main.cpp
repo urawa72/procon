@@ -19,23 +19,14 @@ int main() {
         return 0;
     }
 
-    int a = x * 2;
-    if(a == y){
-        cout << "Yes" << endl;
-    }else{
-        int b = y - a;
-        if(b < 0){
-            cout << "No" << endl;
+    for(int i = 0; i <= x; i++){
+        int w = x - i;
+        if(i * 2 + w * 4 == y){
+            cout << "Yes" << endl;
             return 0;
         }
-        int c = b / 2;
-        int d = x - c;
-        if(0 <= d){
-            cout << "Yes" << endl;
-        }else {
-            cout << "No" << endl;
-        }
     }
+    cout << "No" << endl;
 
     return 0;
 }
