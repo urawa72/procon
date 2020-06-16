@@ -1,26 +1,34 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define rep(i, n) REP(i, 0, n)
-#define REP(i, x, n) for (int i = x; i < n; i++)
-#define OP(x) cout << x << endl;
+#define ALL(v) v.begin(), v.end()
+#define V vector
+#define P pair
+#define ld long double
+#define ll long long
+#define mod 1000000007
+#define IINF INT_MAX
+#define INF 1LL << 30
+
 
 int main() {
     int n; cin >> n;
-    int w[n]; rep(i, n) cin >> w[i];
+    V<int> w(n);
+    for(int i = 0; i < n; i++) cin >> w[i];
 
-    // 冗長
-    // 部分和を総和から引いて絶対値を比較すればO(n)
-    int sum = 0;
-    int ans = 0;
-    rep(i, n - 1) ans += w[i];
-    rep(i, n){
-        sum += w[i];
-        int tmp = 0;
-        REP(j, i + 1, n){
-            tmp += w[j];
-        }
-        ans = min(ans, abs(sum - tmp));
+    V<int> v(n + 1);
+    for(int i = 0; i < n; i++){
+        v[i + 1] = v[i] + w[i];
     }
-    OP(ans);
+
+
+    int ans = IINF;
+    for(int i = 1; i < n; i++){
+        int a = v[i];
+        int b = v[n] - v[i];
+        ans = min(abs(a - b), ans);
+    }
+    cout << ans << endl;
+
+    return 0;
 }

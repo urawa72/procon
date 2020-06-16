@@ -12,11 +12,9 @@ using namespace std;
 
 
 int main() {
-    V<int> v(3);
-    for(int i = 0; i < 3; i++) cin >> v[i];
+    int a, p; cin >> a >> p;
+    int b = a * 3;
+    cout << (b + p) / 2 << endl;
 
-    sort(ALL(v));
-
-    cout << v[0] + v[1] << endl;
     return 0;
 }
