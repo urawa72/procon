@@ -2,23 +2,22 @@
 #include <iomanip>
 using namespace std;
 
-#define rep(i, n) REP(i, 0, n)
-#define REP(i, x, n) for (int i = x; i < n; i++)
-#define REP2(i, x, n) for (int i = x; i <= n; i++)
-#define OP(x) cout << x << endl;
-template<typename T> T gcd(T a, T b) { return b ? gcd(b, a % b) : a; }
-template<typename T> T lcm(T a, T b) { return a / gcd(a, b) * b; }
-typedef long long ll;
+#define ALL(v) v.begin(), v.end()
+#define V vector
+#define P pair
+#define ld long double
+#define ll long long
+#define mod 1000000007
+#define IINF INT_MAX
+#define INF 1LL << 30
+
 
 int main() {
-    ll w, h, x, y;
-    cin >> w >> h >> x >> y;
-    // 中心を通る直線で半分にするのが小さい方の面積の最大値
-    // x, yが中心と同じなら複数
-    // それ以外は中心と(x, y)を通る直線だけ
-    cout << setprecision(10) << w * h / 2.0 << " ";
-    if(x * 2 == w && y * 2 == h) cout << 1 << endl;
-    else cout << 0 << endl;
+    ld w, h, x, y; cin >> w >> h >> x >> y;
+
+    ld s = w * h / 2.0;
+    int n = (x * 2 == w && y * 2 == h) ? 1 : 0;
+    printf("%.10Lf %d\n", s, n);
+
+    return 0;
 }
-
-

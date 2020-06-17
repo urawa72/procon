@@ -23,12 +23,15 @@ int main() {
             if(s[i][j] == '#') continue;
             if(d[j]) continue;
             int l = 0;
+            // #にぶつかるまで.をカウント
             while(j + l < w){
                 if(s[i][j + l] == '#') break;
                 l++;
             }
+            // .の個数を全てに適用
             for(int k = 0; k < l; k++){
                 cnt[i][j + k] += l;
+                // 既にみたところにはフラグを立てる
                 d[j + k] = 1;
             }
         }
