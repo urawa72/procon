@@ -1,35 +1,31 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define rep(i, n) REP(i, 0, n)
-#define REP(i, x, n) for (int i = x; i < n; i++)
-#define REP2(i, x, n) for (int i = x; i <= n; i++)
-#define OP(x) cout << x << endl;
+#define ALL(v) v.begin(), v.end()
+#define V vector
+#define P pair
+#define ld long double
+#define ll long long
+#define mod 1000000007
+#define IINF INT_MAX
+#define INF 1LL << 30
+
 
 int main() {
     int n, l; cin >> n >> l;
+    int sum = 0;
+    V<int> a(n);
+    for(int i = 0; i < n; i++){
+        a[i] = l + i;
+        sum += a[i];
+    }
 
-    // 冗長
-    // int sum = 0;
-    // REP2(i, 1, n) sum += (i + l - 1);
-    // int tmp = abs(l);
-    // int target = 1;
-    // REP2(i, 2, n){
-    //     if(abs(i + l - 1) < tmp){
-    //         tmp = abs(i + l - 1);
-    //         target = i;
-    //     };
-    // }
-    // OP(sum - (target + l - 1));
+    int ans = IINF;
+    for(int i = 0; i < n; i++){
+        int tmp = sum - a[i];
+        if(abs(tmp - sum) < abs(ans - sum)) ans = tmp;
+    }
+    cout << ans << endl;
 
-    // 解答例
-    // 必ずL < R
-    int L = l; // 一番左
-    int R = l + n - 1; // 一番右
-    int eat;
-    if(R <= 0) eat = R;
-    else if(L >= 0) eat = L;
-    else eat = 0;
-    int ans = (R + L) * (R - L + 1) / 2 - eat;
-    OP(ans);
+    return 0;
 }
