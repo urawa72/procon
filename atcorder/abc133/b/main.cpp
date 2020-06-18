@@ -1,30 +1,39 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define rep(i, n) REP(i, 0, n)
-#define REP(i, x, n) for (int i = x; i < n; i++)
-#define OP(x) cout << x << endl;
+#define ALL(v) v.begin(), v.end()
+#define V vector
+#define P pair
+#define ld long double
+#define ll long long
+#define mod 1000000007
+#define IINF INT_MAX
+#define INF 1LL << 30
+
 
 int main() {
     int n, d; cin >> n >> d;
-    vector<vector<double> > vec(n, vector<double>(d));
-    rep(i, n){
-        rep(j, d){
-            cin >> vec[i][j];
+    V<V<int> > v(n, V<int>(d));
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j < d; j++){
+            cin >> v[i][j];
         }
     }
 
-    int cnt = 0;
+    int ans = 0;
     for(int i = 0; i < n; i++){
         for(int j = i + 1; j < n; j++){
-            double tmp = 0.0;
+            int sq = 0;
             for(int k = 0; k < d; k++){
-                tmp += pow(vec[i][k] - vec[j][k], 2.0);
+                int s = v[i][k] - v[j][k];
+                sq += s * s;
             }
-            // 整数判定
-            if(floor(sqrt(tmp)) == sqrt(tmp)) cnt++;
-            // tmp以下の整数で二乗してtmpになる整数をloopで探すことも可能
+            // 小数点切り捨てで1.99999...が2なのに1になる対策
+            int s = sqrt(sq) + 0.5;
+            if(s * s == sq) ans++;
         }
     }
-    OP(cnt);
+    cout << ans << endl;
+
+    return 0;
 }

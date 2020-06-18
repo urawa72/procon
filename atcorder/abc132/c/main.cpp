@@ -1,26 +1,30 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define rep(i, n) REP(i, 0, n)
-#define REP(i, x, n) for (int i = x; i < n; i++)
-#define REP2(i, x, n) for (int i = x; i <= n; i++)
-#define OP(x) cout << x << endl;
-typedef long long ll;
+#define ALL(v) v.begin(), v.end()
+#define V vector
+#define P pair
+#define ld long double
+#define ll long long
+#define mod 1000000007
+#define IINF INT_MAX
+#define INF 1LL << 30
+
 
 int main() {
     int n; cin >> n;
-    vector<int> vec(n);
-    rep(i, n) cin >> vec[i];
+    V<int> d(n);
+    for(int i = 0; i < n; i++) cin >> d[i];
 
-    // ソートしてn/2とn/2-1の差分が2分割できる整数の数
-    sort(vec.begin(), vec.end());
-    int ans = vec[n / 2] - vec[n / 2 - 1];
-    // 冗長
-    // int m = vec[n / 2];
-    // int ans = 0;
-    // while(vec[n / 2 - 1] != m){
-    //     ans++;
-    //     m--;
-    // }
-    OP(ans);
+    sort(ALL(d));
+
+    int ans = 0;
+    for(int i = 1; i <= 100000; i++){
+        auto ite = lower_bound(ALL(d), i);
+        int l = ite - d.begin();
+        if(l == n - l) ans++;
+    }
+    cout << ans << endl;
+
+    return 0;
 }
