@@ -15,7 +15,6 @@ int main() {
     int s; cin >> s;
     int a = s / 100;
     int b = s % 100;
-
     if(0 < a && a <= 12){
         if(0 < b && b <= 12){
             cout << "AMBIGUOUS" << endl;
@@ -29,6 +28,19 @@ int main() {
             cout << "NA" << endl;
         }
     }
+    // string s; cin >> s;
+    // int a = stoi(s.substr(0, 2));
+    // int b = stoi(s.substr(2, 2));
+    // if(0 < a && a <= 12 && 0 < b && b <= 12){
+    //     cout << "AMBIGUOUS" << endl;
+    // }else if(0 < a && a <= 12){
+    //     cout << "MMYY" << endl;
+    // }else if(0 < b && b <= 12){
+    //     cout << "YYMM" << endl;
+    // }else{
+    //     cout << "NA" << endl;
+    // }
+
 
     return 0;
 }

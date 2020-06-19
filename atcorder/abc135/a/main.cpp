@@ -12,15 +12,10 @@ using namespace std;
 
 
 int main() {
-    int n, d; cin >> n >> d;
+    ll a, b; cin >> a >> b;
+    if((a + b) % 2 == 0) cout << (a + b) / 2 << endl;
+    else cout << "IMPOSSIBLE" << endl;
 
-    int a = d * 2 + 1;
-    int b = n / a;
-    if(n <= b * a){
-        cout << n / a << endl;
-    }else{
-        cout << n / a + 1 << endl;
-    }
 
     return 0;
 }

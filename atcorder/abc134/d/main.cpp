@@ -4,53 +4,39 @@ using namespace std;
 #define ALL(v) v.begin(), v.end()
 #define V vector
 #define P pair
-typedef long long ll;
-const int INT_INF = 1e9;
-const ll INF = 1LL << 30;
-const ll MOD = 1e9 + 7;
+#define ld long double
+#define ll long long
+#define mod 1000000007
+#define IINF INT_MAX
+#define INF 1LL << 30
 
 
 int main() {
     int n; cin >> n;
-    V<int> v(n + 1);
-    int sum = 0;
-    for(int i = 1; i <= n; i++){
-        int a; cin >> a;
-        v[i] = a;
-        sum += a;
-    }
+    V<int> a(n + 1);
+    for(int i = 0; i < n; i++) cin >> a[i + 1];
 
-    // 最初が1で全体が偶数だと不可能
-    if(v[0] == 1 && sum % 2 != 0){
-        cout << -1 << endl;
-        return 0;
-    }
-
-    // 大きい箱からチェックしていく
-    V<int> ans(n + 1, 0);
-    int cnt = 0;
+    // 後ろから数える
+    V<int> b(n + 1);
     for(int i = n; i > 0; i--){
-        int sum = 0, j = i;
-        // 箱番号の倍数のボールの総和
-        while(j <= n){
-            sum += ans[j];
-            j += i;
+        int sum = a[i];
+        // 倍数の数え上げはO(NlogN)だから間に合う
+        for(int j = i + i; j <= n; j+=i){
+            sum += b[j];
         }
-        // 余りとボール総和が一致しなければこの箱はボール入れる対象
-        if((v[i] && sum % 2 == 0) || (v[i] == 0 && sum % 2 != 0)){
-            ans[i]++;
-            cnt++;
-        }
+        b[i] = sum % 2;
     }
 
-    // 出力のための整形
-    V<int> ans2;
+    V<int> ans;
     for(int i = 1; i <= n; i++){
-        if(ans[i]) ans2.push_back(i);
+        if(b[i]) ans.push_back(i);
     }
-    cout << cnt << endl;
-    for(int i = 0; i < (int)ans2.size(); i++){
-        if(i != (int)ans2.size() - 1) cout << ans2[i] << " ";
-        else cout << ans2[i] << endl;
+
+    cout << ans.size() << endl;
+    for(int i = 0; i < ans.size(); i++){
+        if(i != ans.size() - 1) cout << ans[i] << ' ';
+        else cout << ans[i] << endl;
     }
+
+    return 0;
 }
