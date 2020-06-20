@@ -12,13 +12,8 @@ using namespace std;
 
 
 int main() {
-    string s, t; cin >> s >> t;
-
-    int cnt = 0;
-    for(int i = 0; i < 3; i++){
-        if(s[i] == t[i]) cnt++;
-    }
-    cout << cnt << endl;
+    int a, b; cin >> a >> b;
+    cout << max({a + b, a - b, a * b}) << endl;
 
     return 0;
 }

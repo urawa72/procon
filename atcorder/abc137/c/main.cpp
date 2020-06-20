@@ -13,15 +13,19 @@ using namespace std;
 
 int main() {
     int n; cin >> n;
-    V<int> b(n - 1);
-    for(int i = 0; i < n - 1; i++) cin >> b[i];
-
-    int ans = b[0];
-    for(int i = 1; i < n - 1; i++){
-        if(b[i - 1] < b[i]) ans += b[i - 1];
-        else ans += b[i];
+    map<string, ll> m;
+    for(int i = 0; i < n; i++){
+        string s; cin >> s;
+        sort(ALL(s));
+        m[s]++;
     }
-    ans += b[n - 2];
+
+    ll ans = 0;
+    for(auto p : m){
+        if(1 < p.second){
+            ans += (p.second * (p.second - 1) / 2);
+        }
+    }
     cout << ans << endl;
 
     return 0;

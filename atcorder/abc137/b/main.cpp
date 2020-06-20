@@ -12,13 +12,12 @@ using namespace std;
 
 
 int main() {
-    string s, t; cin >> s >> t;
+    int k, x; cin >> k >> x;
 
-    int cnt = 0;
-    for(int i = 0; i < 3; i++){
-        if(s[i] == t[i]) cnt++;
+    for(int i = x - k + 1; i < x + k; i++){
+        if(k + x == i) cout << i << endl;
+        else cout << i << " ";
     }
-    cout << cnt << endl;
 
     return 0;
 }

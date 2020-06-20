@@ -1,23 +1,43 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define rep(i, n) REP(i, 0, n)
-#define REP(i, x, n) for (int i = x; i < n; i++)
-#define REP2(i, x, n) for (int i = x; i <= n; i++)
-#define OP(x) cout << x << endl;
+#define ALL(v) v.begin(), v.end()
+#define V vector
+#define P pair
+#define ld long double
+#define ll long long
+#define mod 1000000007
+#define IINF INT_MAX
+#define INF 1LL << 30
+
 
 int main() {
     int n; cin >> n;
-    int a[n + 1]; REP2(i, 1, n) cin >> a[i];
-    int b[n + 1]; REP2(i, 1, n) cin >> b[i];
-    int c[n]; REP2(i, 1, n - 1) cin >> c[i];
-
-    int ans = 0;
-    REP2(i, 1, n){
-        ans += b[a[i]];
-        if(a[i] == a[i + 1] - 1){
-            ans += c[a[i]];
-        }
+    V<int> a(n), b(n), c(n);
+    for(int i = 0; i < n; i++){
+        int x; cin >> x;
+        x--;
+        a[i] = x;
     }
-    OP(ans);
+    for(int i = 0; i < n; i++){
+        int x; cin >> x;
+        b[i] = x;
+    }
+    for(int i = 0; i < n; i++){
+        int x; cin >> x;
+        c[i] = x;
+    }
+
+    int ans = 0, pre = -2;
+    for(int i = 0; i < n; i++){
+        if(pre + 1 == a[i]){
+            ans += (b[a[i]] + c[pre]);
+        }else{
+            ans += b[a[i]];
+        }
+        pre = a[i];
+    }
+    cout << ans << endl;
+
+    return 0;
 }

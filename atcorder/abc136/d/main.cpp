@@ -4,32 +4,43 @@ using namespace std;
 #define ALL(v) v.begin(), v.end()
 #define V vector
 #define P pair
-typedef long long ll;
-const int INT_INF = 1e9;
-const ll INF = 1LL << 30;
-const ll MOD = 1e9 + 7;
+#define ld long double
+#define ll long long
+#define mod 1000000007
+#define IINF INT_MAX
+#define INF 1LL << 30
 
 
 int main() {
     string s; cin >> s;
+
     int n = s.size();
-    V<int> ans(n, 0);
-    int r = 0, l = 0;
-    for(int i = 0; i < n; i++){
-        if(s[i] == 'R'){
-            r++;
-        }else{
-            l++;
+    V<int> ans(n);
+
+    for(int i = 0; i < 2; i++){
+        int cnt = 0;
+        for(int j = 0; j < n; j++){
+            if(s[j] == 'R') cnt++;
+            else{
+                // 右は切り捨て
+                ans[j] += cnt / 2;
+                // 左は切り上げ
+                ans[j - 1] += (cnt + 1) / 2;
+                cnt = 0;
+            }
         }
-        if(s[i] == 'L' && (s[i + 1] == 'R' || i == n - 1)){
-            ans[i - l + 1] = l - (l / 2) + (r / 2);
-            ans[i - l] = r - (r / 2) + (l / 2);
-            r = l = 0;
+        // 反転してLをRに変えて同じ計算使い回す
+        reverse(ALL(ans));
+        reverse(ALL(s));
+        for(int j = 0; j < n; j++){
+            if(s[j] == 'L') s[j] = 'R';
+            else s[j] = 'L';
         }
     }
 
     for(int i = 0; i < n; i++){
-        if(i != n - 1) cout << ans[i] << " ";
-        else cout << ans[i] << endl;
+        cout << ans[i] << endl;
     }
+
+    return 0;
 }

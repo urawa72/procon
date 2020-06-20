@@ -4,19 +4,19 @@ using namespace std;
 #define ALL(v) v.begin(), v.end()
 #define V vector
 #define P pair
-#define ld long double
-#define ll long long
-#define mod 1000000007
-#define IINF INT_MAX
-#define INF 1LL << 30
+typedef long long ll;
+const int INT_INF = 1e9;
+const ll INF = 1LL << 30;
+const ll MOD = 1e9 + 7;
 
-V<V<ll> > g;
-V<ll> ans;
+V<V<int> > g;
+V<int> ans;
 
-void dfs(ll v, ll p = -1){
+// DFS デフォルト引数で親の初期値
+void dfs(int v, int i = -1){
     for(auto next_v : g[v]){
         // 親だったらスルー
-        if(p == next_v) continue;
+        if(next_v == i) continue;
         ans[next_v] += ans[v];
         dfs(next_v, v);
     }
@@ -24,28 +24,29 @@ void dfs(ll v, ll p = -1){
 
 int main() {
     int n, q; cin >> n >> q;
+
+    // 無向グラフ作成
     g.resize(n);
     for(int i = 0; i < n - 1; i++){
-        ll a, b; cin >> a >> b;
+        int a, b; cin >> a >> b;
         a--, b--;
         g[a].push_back(b);
         g[b].push_back(a);
     }
 
-    // 予め親の得点を記録しておく
+    // 頂点の特典を記録
     ans.resize(n);
     for(int i = 0; i < q; i++){
-        ll p, x; cin >> p >> x;
+        int p, x; cin >> p >> x;
         p--;
         ans[p] += x;
     }
 
-    // 親から子に点を渡すdfs
+    // 子に親の点を足すためにDFS
     dfs(0);
 
     for(int i = 0; i < n; i++){
-        cout << ans[i] << endl;
+        if(i != n - 1) cout << ans[i] << " ";
+        else cout << ans[i] << endl;
     }
-
-    return 0;
 }
