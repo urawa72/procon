@@ -1,5 +1,4 @@
 #include <bits/stdc++.h>
-#include <queue>
 using namespace std;
 
 #define ALL(v) v.begin(), v.end()
@@ -13,31 +12,33 @@ using namespace std;
 
 
 int main() {
-    int n, m; cin >> n >> m;
+    ll n, m; cin >> n >> m;
 
-    // priority_queue
-    priority_queue<P<ll, ll> > q;
+    // priority_queueで解く
+    priority_queue<P<ll ,ll> > q;
     for(int i = 0; i < n; i++){
         ll a; cin >> a;
-        q.push({a, 1});
+        q.push(make_pair(a, 1));
     }
     for(int i = 0; i < m; i++){
         ll b, c; cin >> b >> c;
-        q.push({c, b});
+        q.push(make_pair(c, b));
     }
 
     ll ans = 0;
+    // 常に一番大きい値が取れるので、n回取る
     for(int i = 0; i < n; i++){
         auto p = q.top();
         q.pop();
         ans += p.first;
         if(p.second > 1){
+            // 取ったら枚数を減らして戻す
             p.second--;
             q.push(p);
         }
     }
-
     cout << ans << endl;
+
 
     return 0;
 }

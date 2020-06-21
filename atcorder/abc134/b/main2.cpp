@@ -12,11 +12,15 @@ using namespace std;
 
 
 int main() {
-    string s; cin >> s;
+    int n, d; cin >> n >> d;
 
-    if(s == "Sunny") cout << "Cloudy" << endl;
-    if(s == "Cloudy") cout << "Rainy" << endl;
-    if(s == "Rainy") cout << "Sunny" << endl;
+    int a = d * 2 + 1;
+    int b = n / a;
+    if(n <= b * a){
+        cout << n / a << endl;
+    }else{
+        cout << n / a + 1 << endl;
+    }
 
     return 0;
 }

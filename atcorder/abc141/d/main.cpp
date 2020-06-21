@@ -4,37 +4,37 @@ using namespace std;
 #define ALL(v) v.begin(), v.end()
 #define V vector
 #define P pair
-typedef long long ll;
-const int INT_INF = 1e9;
-const ll INF = 1LL << 30;
-const ll MOD = 1e9 + 7;
+#define ld long double
+#define ll long long
+#define mod 1000000007
+#define IINF INT_MAX
+#define INF 1LL << 30
 
 
-// priotiry_queueを使った貪欲法
 int main() {
-    ll n, m; cin >> n >> m;
+    int n, m; cin >> n >> m;
 
-    // 大きい順のpriority_queueに格納
-    priority_queue<ll, V<ll>, less<ll>> que;
+    // 常に最大値を割引するのが良い
+    // priority_queueで現段階でのmaxを拘束に取得する
+    priority_queue<int> q;
     for(int i = 0; i < n; i++){
-        ll a; cin >> a;
-        que.push(a);
+        int a; cin >> a;
+        q.push(a);
     }
 
-    // 先頭からm回2で割る
-    // 常に大きい値を2で割るのが最適なのでpriority_queue
-    while(m > 0){
-        ll tmp = que.top();
-        que.pop();
-        tmp /= 2;
-        m--;
-        que.push(tmp);
+    // 先頭を取り出して割ってまた戻す
+    for(int i = 0; i < m; i++){
+        int a = q.top();
+        q.pop();
+        q.push(a / 2);
     }
 
-    ll sum = 0;
-    while(!que.empty()){
-        sum += que.top();
-        que.pop();
+    ll ans = 0;
+    for(int i = 0; i < n; i++){
+        ans += q.top();
+        q.pop();
     }
-    cout << sum << endl;
+    cout << ans << endl;
+
+    return 0;
 }

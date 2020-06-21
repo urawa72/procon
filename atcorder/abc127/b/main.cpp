@@ -13,15 +13,10 @@ using namespace std;
 
 int main() {
     int r, d, x; cin >> r >> d >> x;
-
-    V<ll> ans(11);
-    ans[0] = x;
-    for(int i = 0; i < 10; i++){
-        ans[i + 1] = ans[i] * r - d;
-    }
+    int ans = x;
     for(int i = 1; i <= 10; i++){
-        cout << ans[i] << endl;
-
+        ans = r * ans - d;
+        cout << ans << endl;
     }
 
     return 0;

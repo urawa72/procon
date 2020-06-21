@@ -17,10 +17,10 @@ int main() {
     ll a, b, c, d; cin >> a >> b >> c >> d;
 
     ll l = lcm(c, d);
-    a--;
-    ll x = b / c + b / d - b / l;
-    ll y = a / c + a / d - a / l;
-    cout << (b - a) - (x - y) << endl;
+    ll e = (b / c) - (a - 1) / c;
+    ll f = (b / d) - (a - 1) / d;
+    ll g = (b / l) - (a - 1) / l;
+    cout << (b - a + 1) - e - f + g << endl;
 
     return 0;
 }

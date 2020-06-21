@@ -12,21 +12,21 @@ using namespace std;
 
 
 int main() {
-    int n, m; cin >> n >> m;
-    V<int> l(m), r(m);
-    for(int i = 0; i < m; i++) cin >> l[i] >> r[i];
+    ll n, m; cin >> n >> m;
+    V<ll> l(m), r(m);
+    for(int i = 0; i < m; i++){
+        cin >> l[i] >> r[i];
+    }
 
+    // 左のゲートの最大値〜右のゲートの最小値内であれば全ゲート通れる
     sort(ALL(l));
     sort(ALL(r));
 
-    int ans = 0;
+    ll ans = 0;
     for(int i = 1; i <= n; i++){
-        if(l[m - 1] <= i && i <= r[0]){
-            ans++;
-        }
+        if(l[m - 1] <= i && i <= r[0]) ans++;
     }
     cout << ans << endl;
-
 
     return 0;
 }

@@ -11,9 +11,9 @@ url=$base1$1$base2$1
 
 for i in a b c d
 do
-  mkdir -p $1"/"$i
+  # mkdir -p $1"/"$i
   cd $1"/"$i
-  touch main.cpp
+  # touch main.cpp
   echo $url"_"$i
   oj d $url"_"$i
   cd - > /dev/null

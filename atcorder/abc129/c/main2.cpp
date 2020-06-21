@@ -15,18 +15,21 @@ int main() {
     int n, m; cin >> n >> m;
     V<int> b(n + 1);
     for(int i = 0; i < m; i++){
-        int x; cin >> x;
-        b[x] = 1;
+        int a; cin >> a;
+        b[a] = 1;
     }
 
-    // 前からdp
-    V<int> dp(n + 10);
-    dp[0] = 1;
-    for(int i = 0; i <= n - 1; i++){
-        if(b[i]) continue;
-        if(!b[i + 1]) (dp[i + 1] += dp[i]) %= mod;
-        if(!b[i + 2]) (dp[i + 2] += dp[i]) %= mod;
+    V<int> dp(n + 2);
+    dp[n] = 1;
+    for(int i = n - 1; i >= 0; i--){
+        if(b[i]){
+            dp[i] = 0;
+            continue;
+        }
+        dp[i] = (dp[i + 1] + dp[i + 2]) % mod;
     }
-    cout << dp[n] << endl;
+    cout << dp[0] << endl;
+
+
     return 0;
 }

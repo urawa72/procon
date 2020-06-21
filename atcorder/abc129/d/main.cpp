@@ -10,59 +10,54 @@ using namespace std;
 #define IINF INT_MAX
 #define INF 1LL << 30
 
+
 int main() {
     int h, w; cin >> h >> w;
-    V<string> s(h);
-    for(int i = 0; i < h; i++) cin >> s[i];
+    V<string> b(h);
+    for(int i = 0; i < h; i++) cin >> b[i];
 
-    V<V<int> > cnt(h, V<int>(w));
-    // 横で見る
+    V<V<int> > ans(h, V<int>(w, 0));
     for(int i = 0; i < h; i++){
-        V<int> d(w);
+        V<int> seen(w + 1);
         for(int j = 0; j < w; j++){
-            if(s[i][j] == '#') continue;
-            if(d[j]) continue;
-            int l = 0;
-            // #にぶつかるまで.をカウント
-            while(j + l < w){
-                if(s[i][j + l] == '#') break;
-                l++;
+            if(b[i][j] == '#') continue;
+            if(seen[j]) continue;
+            int len = 0;
+            while(j + len < w){
+                if(b[i][j + len] == '#') break;
+                len++;
             }
-            // .の個数を全てに適用
-            for(int k = 0; k < l; k++){
-                cnt[i][j + k] += l;
-                // 既にみたところにはフラグを立てる
-                d[j + k] = 1;
+            for(int k = 0; k < len; k++){
+                ans[i][j + k] += len;
+                seen[j + k] = 1;
             }
         }
     }
-    // 縦で見る
+
     for(int j = 0; j < w; j++){
-        V<int> d(h);
+        V<int> seen(h + 1);
         for(int i = 0; i < h; i++){
-            if(s[i][j] == '#') continue;
-            if(d[i]) continue;
-            int l = 0;
-            while(i + l < h){
-                if(s[i + l][j] == '#') break;
-                l++;
+            if(b[i][j] == '#') continue;
+            if(seen[i]) continue;
+            int len = 0;
+            while(i + len < h){
+                if(b[i + len][j] == '#') break;
+                len++;
             }
-            for(int k = 0; k < l; k++){
-                cnt[i + k][j] += l;
-                d[i + k] = 1;
+            for(int k = 0; k < len; k++){
+                ans[i + k][j] += len;
+                seen[i + k] = 1;
             }
         }
     }
 
-    // 重なっているところ-1
-    int ans = 0;
+    int res = 0;
     for(int i = 0; i < h; i++){
         for(int j = 0; j < w; j++){
-            ans = max(ans, cnt[i][j] - 1);
+            res = max(res, ans[i][j] - 1);
         }
     }
-    cout << ans << endl;
-
+    cout << res << endl;
 
     return 0;
 }

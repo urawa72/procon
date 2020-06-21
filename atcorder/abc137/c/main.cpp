@@ -13,17 +13,19 @@ using namespace std;
 
 int main() {
     int n; cin >> n;
-    map<string, ll> m;
+
+    map<string, int> mp;
     for(int i = 0; i < n; i++){
         string s; cin >> s;
         sort(ALL(s));
-        m[s]++;
+        mp[s]++;
     }
 
     ll ans = 0;
-    for(auto p : m){
+    for(auto p : mp){
         if(1 < p.second){
-            ans += (p.second * (p.second - 1) / 2);
+            ll i = p.second;
+            ans += (ll)(i * (i - 1)) / 2;
         }
     }
     cout << ans << endl;

@@ -1,32 +1,34 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define rep(i, n) REP(i, 0, n)
-#define REP(i, x, n) for (int i = x; i < n; i++)
-#define REP2(i, x, n) for (int i = x; i <= n; i++)
-#define OP(x) cout << x << endl;
-typedef long long ll;
+#define ALL(v) v.begin(), v.end()
+#define V vector
+#define P pair
+#define ld long double
+#define ll long long
+#define mod 1000000007
+#define IINF INT_MAX
+#define INF 1LL << 30
+
 
 int main() {
-    int n, k, q; cin >> n >> k >> q;
-    ll d = k - q;
-    vector<int> vec(n + 1);
+    ll n, k, q; cin >> n >> k >> q;
+    V<ll> v(q);
+    for(ll i = 0; i < q; i++){
+        ll a; cin >> a;
+        a--;
+        v[i] = a;
+    }
 
-    // O(n+q+n)
-    // 開始ポイントを減らしておく
-    REP2(i, 1, n){
-        vec[i] = d;
+    V<ll> ans(n, k);
+    for(int i = 0; i < q; i++){
+        ans[v[i]]++;
     }
-    // 正解者は増やしていく
-    rep(i, q){
-        int a; cin >> a;
-        vec[a] += 1;
+
+    for(int i = 0; i < n; i++){
+        if(ans[i] - q <= 0) cout << "No" << endl;
+        else cout << "Yes" << endl;
     }
-    REP2(i, 1, n){
-        if(vec[i] > 0){
-            OP("Yes");
-        }else{
-            OP("No");
-        }
-    }
+
+    return 0;
 }

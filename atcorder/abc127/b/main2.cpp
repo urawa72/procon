@@ -12,11 +12,17 @@ using namespace std;
 
 
 int main() {
-    string s; cin >> s;
+    int r, d, x; cin >> r >> d >> x;
 
-    if(s == "Sunny") cout << "Cloudy" << endl;
-    if(s == "Cloudy") cout << "Rainy" << endl;
-    if(s == "Rainy") cout << "Sunny" << endl;
+    V<ll> ans(11);
+    ans[0] = x;
+    for(int i = 0; i < 10; i++){
+        ans[i + 1] = ans[i] * r - d;
+    }
+    for(int i = 1; i <= 10; i++){
+        cout << ans[i] << endl;
+
+    }
 
     return 0;
 }

@@ -12,15 +12,19 @@ using namespace std;
 
 
 int main() {
-    int n; cin >> n;
-    V<int> b(n);
-    for(int i = 0; i < n - 1; i++) cin >> b[i];
-
-    int ans = b[0];
-    for(int i = 1; i < n; i++){
-        ans += min(b[i - 1], b[i]);
+    int n, l; cin >> n >> l;
+    int sum = 0;
+    V<int> a(n);
+    for(int i = 0; i < n; i++){
+        a[i] = l + i;
+        sum += a[i];
     }
-    ans += b[n - 2];
+
+    int ans = IINF;
+    for(int i = 0; i < n; i++){
+        int tmp = sum - a[i];
+        if(abs(tmp - sum) < abs(ans - sum)) ans = tmp;
+    }
     cout << ans << endl;
 
     return 0;

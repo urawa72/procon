@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-#include <iomanip>
+#include <cstdio>
 using namespace std;
 
 #define ALL(v) v.begin(), v.end()
@@ -14,15 +14,12 @@ using namespace std;
 
 int main() {
     int n; cin >> n;
-    V<double> a(n);
-    for(int i = 0; i < n; i++) cin >> a[i];
-
     double sum = 0;
     for(int i = 0; i < n; i++){
-        sum += 1.0 / a[i];
+        double a; cin >> a;
+        sum += 1 / a;
     }
-
-    cout << setprecision(12) << 1.0 / sum << endl;
+    printf("%.10f\n", 1 / sum);
 
     return 0;
 }

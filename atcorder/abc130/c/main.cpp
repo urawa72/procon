@@ -1,5 +1,4 @@
 #include <bits/stdc++.h>
-#include <iomanip>
 using namespace std;
 
 #define ALL(v) v.begin(), v.end()
@@ -13,11 +12,13 @@ using namespace std;
 
 
 int main() {
-    ld w, h, x, y; cin >> w >> h >> x >> y;
+    long double w, h, x, y; cin >> w >> h >> x >> y;
 
-    ld s = w * h / 2.0;
-    int n = (x * 2 == w && y * 2 == h) ? 1 : 0;
-    printf("%.10Lf %d\n", s, n);
+    if(x * 2 == w && y * 2 == h){
+        printf("%.10Lf %d\n", w * h / 2, 1);
+    }else{
+        printf("%.10Lf %d\n", w * h / 2, 0);
+    }
 
     return 0;
 }

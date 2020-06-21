@@ -13,17 +13,22 @@ using namespace std;
 
 int main() {
     int n, l; cin >> n >> l;
-    int sum = 0;
+
     V<int> a(n);
+    int s = 0;
     for(int i = 0; i < n; i++){
         a[i] = l + i;
-        sum += a[i];
+        s += a[i];
     }
 
-    int ans = IINF;
+    int x = IINF;
+    int ans = 0;
     for(int i = 0; i < n; i++){
-        int tmp = sum - a[i];
-        if(abs(tmp - sum) < abs(ans - sum)) ans = tmp;
+        int t = s - a[i];
+        if(abs(s - t) < x){
+            x = abs(s - t);
+            ans = t;
+        }
     }
     cout << ans << endl;
 

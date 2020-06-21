@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#include <iomanip>
 using namespace std;
 
 #define ALL(v) v.begin(), v.end()
@@ -12,11 +13,16 @@ using namespace std;
 
 
 int main() {
-    string s; cin >> s;
+    int n; cin >> n;
+    V<double> a(n);
+    for(int i = 0; i < n; i++) cin >> a[i];
 
-    if(s == "Sunny") cout << "Cloudy" << endl;
-    if(s == "Cloudy") cout << "Rainy" << endl;
-    if(s == "Rainy") cout << "Sunny" << endl;
+    double sum = 0;
+    for(int i = 0; i < n; i++){
+        sum += 1.0 / a[i];
+    }
+
+    cout << setprecision(12) << 1.0 / sum << endl;
 
     return 0;
 }

@@ -14,13 +14,9 @@ using namespace std;
 int main() {
     int n, d; cin >> n >> d;
 
-    int a = d * 2 + 1;
-    int b = n / a;
-    if(n <= b * a){
-        cout << n / a << endl;
-    }else{
-        cout << n / a + 1 << endl;
-    }
+    d = d * 2 + 1;
+
+    cout << (n + d - 1) / d << endl;
 
     return 0;
 }
