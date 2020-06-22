@@ -13,17 +13,21 @@ using namespace std;
 
 int main() {
     int n; cin >> n;
-    V<P<int, int> > a(n);
+    V<ll> a(n);
+    for(int i = 0; i < n; i++) cin >> a[i];
+
+    // XORの性質
+    ll s = 0;
     for(int i = 0; i < n; i++){
-        int x; cin >> x;
-        a[i] = make_pair(x, i);
+        s ^= a[i];
+    }
+    for(int i = 0; i < n; i++){
+        a[i] ^= s;
+    }
+    for(int i = 0; i < n; i++){
+        cout << a[i] << endl;
     }
 
-    sort(ALL(a));
-    for(int i = 0; i < n; i++){
-        if(i != n -1) cout << a[i].second + 1 << ' ';
-        else cout << a[i].second + 1 << endl;
-    }
 
     return 0;
 }
