@@ -1,23 +1,32 @@
 #include <bits/stdc++.h>
-#include <iomanip>
 using namespace std;
 
-#define all(v) v.begin(), v.end()
+#define ALL(v) v.begin(), v.end()
 #define V vector
 #define P pair
-typedef long long ll;
-const double PI = 3.14159265358979;
+#define ld long double
+#define ll long long
+
+const int MOD =  1000000007;
+const int IINF = INT_MAX;
+const ll INF = 1LL << 60;
+
 
 int main() {
     double a, b, x; cin >> a >> b >> x;
-    double theta;
 
-    if(a * a * b / 2 < x){
-        theta = atan(2 * (a * a * b - x) / (a * a * a));
+    double s = x / a;
+    double rad;
+    if(s >= a * b / 2){
+        double h = (a * b - s) * 2 / a;
+        rad = atan2(h, a);
     }else{
-        theta = atan((a * b * b) / (2 * x));
+        double w = s * 2 / b;
+        rad = atan2(b, w);
     }
+    double PI = acos(-1);
+    double deg = rad / (2 * PI) * 360;
+    printf("%.10f", deg);
 
-    theta = theta * 180 / PI;
-    cout << setprecision(20) << theta << endl;
+    return 0;
 }
