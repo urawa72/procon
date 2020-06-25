@@ -1,48 +1,58 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define all(v) v.begin(), v.end()
+#define ALL(v) v.begin(), v.end()
 #define V vector
 #define P pair
-typedef long long ll;
-const int MAX = 1000000;
-const int MOD = 1000000007;
+#define ld long double
+#define ll long long
+#define MOD 1000000007
+#define IINF INT_MAX
+#define INF 1LL << 30
 
-long long fac[MAX], finv[MAX], inv[MAX];
-
-// テーブルを作る前処理
-void COMinit() {
-    fac[0] = fac[1] = 1;
-    finv[0] = finv[1] = 1;
-    inv[1] = 1;
-    for (int i = 2; i < MAX; i++){
-        fac[i] = fac[i - 1] * i % MOD;
-        inv[i] = MOD - inv[MOD%i] * (MOD / i) % MOD;
-        finv[i] = finv[i - 1] * inv[i] % MOD;
-    }
+ll mod_pow(ll x, ll a){
+    if(a == 1) return x;
+    if(a % 2) return (x * mod_pow(x, a - 1)) % MOD;
+    ll t = mod_pow(x, a / 2);
+    return (t * t) % MOD;
 }
 
- // 二項係数計算
-long long COM(int n, int k){
-    if (n < k) return 0;
-    if (n < 0 || k < 0) return 0;
-    return fac[n] * (finv[k] * finv[n - k] % MOD) % MOD;
+ll mod_inv(ll x){
+    return mod_pow(x, MOD - 2);
+}
+
+ll mod_perm(ll n, ll k){
+    ll ret = 1;
+    for(int i = 0; i < k; i++){
+        ret = (ret * (n - i)) % MOD;
+    }
+    return ret;
+}
+
+ll mod_comb(ll n, ll k){
+    ll a, b;
+    a = mod_perm(n, k);
+    b = mod_perm(k, k);
+    return (a * mod_inv(b)) % MOD;
 }
 
 int main() {
-    ll X, Y; cin >> X >> Y;
-    if((X + Y) % 3 != 0){
+    int x, y; cin >> x >> y;
+    if((x + y) %3){
         cout << 0 << endl;
         return 0;
     }
 
-    ll n = (-X + Y * 2) / 3;
-    ll m = (X * 2 - Y) / 3;
-    if(n < 0 || m < 0){
+    // 移動回数を求める
+    int n = (x + y) / 3;
+    // +(1,2)=+(1,0)+(1,1)なので(1,0)の移動だけに変換すると
+    // (1,1)をn回余計に動いているからx,yからnを引いておく
+    x -= n; y -= n;
+    if(x < 0 || y < 0){
         cout << 0 << endl;
         return 0;
     }
+    cout << mod_comb(x + y, x) << endl;
 
-    COMinit();
-    cout << COM((X + Y) / 3, n) << endl;
+    return 0;
 }
