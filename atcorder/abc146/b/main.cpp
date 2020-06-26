@@ -1,30 +1,25 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define rep(i, n) REP(i, 0, n)
-#define REP(i, x, n) for (int i = x; i < n; i++)
-#define OP(x) cout << x << endl;
+#define ALL(v) v.begin(), v.end()
+#define V vector
+#define P pair
+#define ld long double
+#define ll long long
+#define mod 1000000007
+#define IINF INT_MAX
+#define INF 1LL << 30
+
 
 int main() {
     int n; cin >> n;
-    // string s; cin >> s;
-    //
-    // string ans = "";
-    // rep(i, s.size()){
-    //     char tmp = s[i] + n;
-    //     if(tmp - '0' > 42){
-    //         int r = 43 - (s[i] - '0');
-    //         tmp = 'A' + (n - r);
-    //     }
-    //     ans += tmp;
-    // }
-    // OP(ans);
+    string s; cin >> s;
 
-    char s[10010]; cin >> s;
-    rep(i, strlen(s)){
-        int x = s[i] - 'A';
-        x = (x + n) % 26;
-        putchar('A' + x);
+    for(int i = 0; i < s.size(); i++){
+        if(s[i] + n <= 'Z') cout << char(s[i] + n);
+        else cout << char('A' + n - ('Z' - s[i]) - 1);
     }
-    putchar('\n');
+    cout << "\n";
+
+    return 0;
 }

@@ -1,49 +1,60 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define all(v) v.begin(), v.end()
+#define ALL(v) v.begin(), v.end()
 #define V vector
 #define P pair
-typedef long long ll;
-template<class T> void chmax(T& a, T b) { if(a < b) a = b; }
+#define ld long double
+#define ll long long
+#define mod 1000000007
+#define IINF INT_MAX
+#define INF 1LL << 30
+
+// 辺のidも保持した構造体
+struct Edge {
+    int to, id;
+};
+
+// 隣接リスト
+V<V<Edge> > g, id;
+V<int> ans;
+
+// 頂点vの周りの辺を塗る
+// cは親の色
+// pは親頂点
+void dfs(int v, int c = -1, int p = -1){
+    int k = 1;
+    for(auto ng : g[v]){
+        if(ng.to == p) continue;
+        if(k == c) k++; // 親の色と同じならincrement
+        ans[ng.id] = k; // 辺idに対して色番号をセット
+        k++;
+        dfs(ng.to, ans[ng.id], v);
+    }
+}
 
 int main() {
     int n; cin >> n;
-    V<V<P<int, int> > > g(n + 1);
+    g.resize(n);
     for(int i = 0; i < n - 1; i++){
-        int a, b; cin >> a >> b; --a, --b;
-        g[a].push_back({b, i});
-        g[b].push_back({a, i});
+        int a, b; cin >> a >> b;
+        a--, b--;
+        g[a].push_back((Edge){b, i});
+        g[b].push_back((Edge){a, i});
     }
 
-    // 最大次数から最大色数を特定
-    int mc = 0;
-    for(int i = 0; i < n; i++) chmax(mc, (int)g[i].size());
+    ans.resize(n - 1);
+    dfs(0);
 
-    V<int> ans(n - 1, -1); // 各辺の色を記録
-    V<int> d(n, -1); // 訪問未訪問の管理
-    queue<P<int, int>> que;
-    que.push({0, -1});
-    d[0] = 1;
-    while(!que.empty()){
-        auto p1 = que.front();
-        que.pop();
-        int v = p1.first; // 頂点
-        int c = p1.second; // 色
-        int color = 1;
-        if(color == c) color++; // 親と被ってたらスキップ
-        for(auto p2 : g[v]){
-            // 未訪問の場合
-            if(d[p2.first] == -1){
-                d[p2.first] = 1;
-                que.push({p2.first, color});
-                ans[p2.second] = color;
-                color++;
-                if(color == c) color++; // 親と被ったらスキップ
-            }
-        }
+    // 最大色数=次数
+    int mx = 0;
+    for(int i = 0; i < n; i++){
+        mx = max(mx, (int)g[i].size());
     }
-    cout << mc << endl;
-    for(int i = 0; i < n - 1; i++) cout << ans[i] << endl;
 
+    cout << mx << endl;
+    for(int i = 0; i < n - 1; i++){
+        cout << ans[i] << endl;
+    }
+    return 0;
 }
