@@ -12,15 +12,7 @@ using namespace std;
 
 
 int main() {
-    string s; cin >> s;
-    string t = s;
-    reverse(ALL(t));
-
-    int ans = 0;
-    for(int i = 0; i < (int)s.size(); i++){
-        if(s[i] != t[i]) ans++;
-    }
-    cout << ans / 2 << endl;
+    ll n; cin >> n;
 
     return 0;
 }

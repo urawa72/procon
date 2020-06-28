@@ -13,14 +13,13 @@ using namespace std;
 
 int main() {
     string s; cin >> s;
-    string t = s;
-    reverse(ALL(t));
+    string t; cin >> t;
 
-    int ans = 0;
+    int cnt = 0;
     for(int i = 0; i < (int)s.size(); i++){
-        if(s[i] != t[i]) ans++;
+        if(s[i] != t[i]) cnt++;
     }
-    cout << ans / 2 << endl;
+    cout << cnt << endl;
 
     return 0;
 }

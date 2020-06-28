@@ -1,65 +1,54 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define rep(i, n) REP(i, 0, n)
-#define REP(i, x, n) for (int i = x; i < n; i++)
-#define OP(x) cout << x << endl;
+#define ALL(v) v.begin(), v.end()
+#define V vector
+#define P pair
+#define ld long double
+#define ll long long
+#define mod 1000000007
+#define IINF INT_MAX
+#define INF 1LL << 30
 
-int N;
-vector<int> A;
-vector<vector<int> > X;
-vector<vector<int> > Y;
-int ANS = 0;
-
-void check(int xy[]){
-    bool flag = true;
-    rep(i, N){
-        // 不親切の仮定なら発言の判定はしない
-        if(xy[i] == 0) continue;
-        rep(j, Y[i].size()){
-            if(xy[X[i][j] - 1] != Y[i][j]){
-                flag = false;
-                break;
-            }
-        }
-    }
-    int ans = 0;
-    if(flag){
-        rep(i, N){
-            if(xy[i] == 1) ans++;
-        }
-    }
-    ANS = max(ANS, ans);
-}
-
-void rec(int n, int xy[]){
-    if(n != N){
-        xy[n] = 1;
-        rec(n + 1, xy);
-        xy[n] = 0;
-        rec(n + 1, xy);
-    }else{
-        // 場合分け完了したらそれぞれチェック
-        check(xy);
-    }
-}
 
 int main() {
-    cin >> N;
-    A.resize(N);
-    X.resize(N);
-    Y.resize(N);
-    rep(i, N){
-        cin >> A[i];
-        X[i].resize(A[i]);
-        Y[i].resize(A[i]);
-        rep(j, A[i]){
-            cin >> X[i][j] >> Y[i][j];
+    int n; cin >> n;
+    V<V<P<int, int> > > v(n);
+    for(int i = 0; i < n; i++){
+        int a; cin >> a;
+        v[i].resize(a);
+        for(int j = 0; j < a; j++){
+            int x, y; cin >> x >> y;
+            x--;
+            v[i][j] = make_pair(x, y);
         }
     }
 
-    // 再帰関数で判定
-    int xy[N];
-    rec(0, xy);
-    OP(ANS);
+    int ans = 0;
+    for(int bit = 0; bit < (1 << n); bit++){
+        bool flag = true;
+        for(int i = 0; i < n; i++){
+            if(bit & (1 << i)){
+                for(int j = 0; j < (int)v[i].size(); j++){
+                    int f = v[i][j].first;
+                    int s = v[i][j].second;
+                    int b = bit & (1 << f);
+                    if(b && s) continue;
+                    if(b == 0 && s == 0) continue;
+                    else{
+                        flag = false;
+                        break;
+                    }
+                }
+            }
+            if(!flag) break;
+        }
+        if(flag){
+            bitset<15> bs(bit);
+            int tmp = bs.count();
+            ans = max(ans, tmp);
+        }
+    }
+    cout << ans << endl;
+    return 0;
 }

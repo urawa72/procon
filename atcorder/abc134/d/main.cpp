@@ -12,30 +12,30 @@ using namespace std;
 
 
 int main() {
-    int n; cin >> n;
-    V<int> a(n + 1);
-    for(int i = 0; i < n; i++) cin >> a[i + 1];
-
-    // 後ろから数える
-    V<int> b(n + 1);
-    for(int i = n; i > 0; i--){
-        int sum = a[i];
-        // 倍数の数え上げはO(NlogN)だから間に合う
-        for(int j = i + i; j <= n; j+=i){
-            sum += b[j];
-        }
-        b[i] = sum % 2;
-    }
+    int m; cin >> m;
+    V<int> a(m + 1);
+    for(int i = 1; i <= m; i++) cin >> a[i];
 
     V<int> ans;
-    for(int i = 1; i <= n; i++){
-        if(b[i]) ans.push_back(i);
+    V<int> cnt(m + 1, 0);
+    for(int i = m; i > 0; i--){
+        int c = 0;
+        for(int j = i; j <= m; j+=i){
+            if(cnt[j]) c++;
+        }
+        if(a[i] == 1 && c % 2 == 0){
+            cnt[i] = 1;
+            ans.push_back(i);
+        }
+        if(a[i] == 0 && c % 2 == 1){
+            cnt[i] = 1;
+            ans.push_back(i);
+        }
     }
 
     cout << ans.size() << endl;
-    for(int i = 0; i < ans.size(); i++){
-        if(i != ans.size() - 1) cout << ans[i] << ' ';
-        else cout << ans[i] << endl;
+    for(int i = 0; i < (int)ans.size(); i++){
+        cout << ans[i] << endl;
     }
 
     return 0;
