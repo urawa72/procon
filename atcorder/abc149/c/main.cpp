@@ -1,26 +1,32 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define rep(i, n) REP(i, 0, n)
-#define REP(i, x, n) for (int i = x; i < n; i++)
-#define OP(x) cout << x << endl;
+#define ALL(v) v.begin(), v.end()
+#define V vector
+#define P pair
+#define ld long double
+#define ll long long
+#define mod 1000000007
+#define IINF INT_MAX
+#define INF 1LL << 30
+
+bool is_prime(ll N){
+    for(ll i = 2; i * i <= N; i++){
+        if(N % i == 0) return false;
+    }
+    return true;
+}
+
 
 int main() {
-    int x; cin >> x;
-
-    int ans = 0;
-    for(int i = x; i <= 1000000; i++){
-        bool flag = true;
-        for(int j = 2; j * j < i; j++){
-            if(i % j == 0){
-                flag = false;
-                break;
-            }
+    ll x; cin >> x;
+    while(1){
+        if(is_prime(x)){
+            cout << x << endl;
+            return 0;
         }
-        if(flag){
-            ans = i;
-            break;
-        }
+        x++;
     }
-    OP(ans);
+
+    return 0;
 }
