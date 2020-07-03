@@ -1,36 +1,35 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define rep(i, n) REP(i, 0, n)
-#define REP(i, x, n) for (int i = x; i < n; i++)
-#define OP(x) cout << x << endl;
+#define ALL(v) v.begin(), v.end()
+#define V vector
+#define P pair
+#define ld long double
+#define ll long long
+#define mod 1000000007
+#define IINF INT_MAX
+#define INF 1LL << 30
+
 
 int main() {
     int n, m; cin >> n >> m;
-    int wa[n + 1];
-    bool ac[n + 1];
+    V<int> wa(n + 1, 0);
+    V<bool> ac(n + 1, false);
 
-    // あらかじめ配列で問題番号とac/waを管理する
-    for(int i = 1; i <= n; i++){
-        wa[i] = 0;
-        ac[i] = false;
-    }
-
-    int acNum = 0;
-    int waNum = 0;
-    // O(n + m)
-    while(m--){
-        int p;
-        string s;
-        cin >> p >> s;
+    int acn = 0, wan = 0;
+    for(int i = 0; i < m; i++){
+        int p; cin >> p;
+        string s; cin >> s;
         if(ac[p]) continue;
         if(s == "AC"){
             ac[p] = true;
-            acNum++;
-            waNum += wa[p];
+            acn++;
+            wan += wa[p];
         }else{
             wa[p]++;
         }
     }
-    cout << acNum << " " << waNum << endl;
+    cout << acn << ' ' << wan << endl;
+
+    return 0;
 }
