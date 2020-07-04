@@ -1,23 +1,28 @@
 #include <bits/stdc++.h>
+#include <numeric>
+#include <type_traits>
 using namespace std;
 
-#define rep(i, n) REP(i, 0, n)
-#define REP(i, x, n) for (int i = x; i < n; i++)
-#define OP(x) cout << x << endl;
+#define ALL(v) v.begin(), v.end()
+#define V vector
+#define P pair
+#define ld long double
+#define ll long long
+#define mod 1000000007
+#define IINF INT_MAX
+#define INF 1LL << 30
+
 
 int main() {
-    int h, n;
-    cin >> h >> n;
-
-    string ans = "No";
-    rep(i, n){
-        int a;
-        cin >> a;
-        h -= a;
-        if(h <= 0){
-            ans = "Yes";
-            break;
-        }
+    int h, n; cin >> h >> n;
+    int sum = 0;
+    for(int i = 0; i < n; i++){
+        int a; cin >> a;
+        sum += a;
     }
-    OP(ans);
+
+    if(h <= sum) cout << "Yes" << endl;
+    else cout << "No" << endl;
+
+    return 0;
 }

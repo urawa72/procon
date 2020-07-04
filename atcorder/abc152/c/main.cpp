@@ -1,19 +1,30 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define rep(i, n) REP(i, 0, n)
-#define REP(i, x, n) for (int i = x; i < n; i++)
-#define OP(x) cout << x << endl;
+#define ALL(v) v.begin(), v.end()
+#define V vector
+#define P pair
+#define ld long double
+#define ll long long
+#define mod 1000000007
+#define IINF INT_MAX
+#define INF 1LL << 30
+
 
 int main() {
     int n; cin >> n;
-    long p[n + 1]; REP(i, 1, n + 1) cin >> p[i];
+    V<int> p(n);
+    for(int i = 0; i < n; i++) cin >> p[i];
 
-    long ans = 0;
-    long m = p[1];
-    for(int i = 1; i <= n; i++){
-        m = min(m, p[i]);
-        if(p[i] <= m) ans++;
+    int ans = 1;
+    int mi = p[0];
+    for(int i = 1; i < n; i++){
+        if(p[i] <= mi){
+            ans++;
+            mi = min(mi, p[i]);
+        }
     }
-    OP(ans);
+    cout << ans << endl;
+
+    return 0;
 }

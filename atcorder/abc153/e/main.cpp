@@ -1,5 +1,5 @@
+#include <algorithm>
 #include <bits/stdc++.h>
-#include <functional>
 using namespace std;
 
 #define ALL(v) v.begin(), v.end()
@@ -13,23 +13,17 @@ using namespace std;
 
 
 int main() {
-    int n, k; cin >> n >> k;
-    V<int> h(n);
-    for(int i = 0; i < n; i++) cin >> h[i];
-
-    ll ans = 0;
-    sort(ALL(h), greater<int>());
+    int h, n; cin >> h >> n;
+    V<int> dp(h + 1, 1001001001);
+    dp[0] = 0;
     for(int i = 0; i < n; i++){
-        if(0 < k){
-            k--;
-            continue;
-        }else{
-            ans += h[i];
+        int a, b; cin >> a >> b;
+        for(int j = 0; j < h; j++){
+            int nj = min(j + a, h);
+            dp[nj] = min(dp[nj], dp[j] + b);
         }
     }
-    cout << ans << endl;
-
-
+    cout << dp[h] << endl;
 
     return 0;
 }
