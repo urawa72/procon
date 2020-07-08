@@ -48,12 +48,8 @@ ans = [0] * n
 for i in range(n):
     # 連結成分ごとに集合を取り出す
     group = d[parent[i]]
-    # 集合の全要素数 - 友達 - 自分
-    tmp = len(group) - len(f[i]) - 1
-    # 集合にブロック関係の要素があれば引く
-    for j in g[i]:
-        if j in group:
-            tmp -= 1
-    ans[i] = tmp
+    # 集合の全要素数 - 友達 - ブロック - 自分
+    sum = len(group) - len(f[i]) - len(set(g[i]) & group) - 1
+    ans[i] = sum
 
 print(*ans)
