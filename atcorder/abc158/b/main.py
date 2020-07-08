@@ -4,8 +4,8 @@ input = sys.stdin.readline
 
 n,a,b = map(int, input().split())
 
-t = n // (a + b)
-u = n - (a + b) * t
-if a < u:
-    u = a
-print(t * a + u)
+c = n // (a + b)
+d = n % (a + b)
+if a < d:
+    d = a
+print(c * a + d)
