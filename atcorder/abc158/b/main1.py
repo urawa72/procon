@@ -4,4 +4,8 @@ input = sys.stdin.readline
 
 n,a,b = map(int, input().split())
 
-print(n // (a + b) * a + min(n % (a + b), a))
+c = n // (a + b)
+d = n % (a + b)
+if a < d:
+    d = a
+print(c * a + d)
