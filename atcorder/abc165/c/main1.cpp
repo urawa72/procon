@@ -2,20 +2,14 @@
 #include <vector>
 using namespace std;
 
-#define ALL(v) v.begin(), v.end()
-#define V vector
-#define P pair
-typedef long double ld;
+#define all(v) v.begin(), v.end()
 typedef long long ll;
-const int MOD =  1000000007;
-const int IINF = INT_MAX;
-const ll INF = 1LL << 60;
 
 int n, m, q;
 vector<int> a, b, c, d;
 int ans = 0;
 
-void dfs(vector<int> &A, int &res){
+void dfs(vector<int> A){
     if(A.size() == n + 1){
         int sum = 0;
         for(int i = 0; i < q; i++){
@@ -24,14 +18,14 @@ void dfs(vector<int> &A, int &res){
         ans = max(ans, sum);
         return;
     }
-    int x = A.back();
-    for(int i = x; i <= m; i++){
-        A.push_back(i);
-        dfs(A, res);
-        A.pop_back();
+    // 末尾と同じ数を入れる
+    A.push_back(A.back());
+    while(A.back() <= m){
+        dfs(A);
+        A.back()++;
     }
-
 }
+
 
 int main() {
     cin >> n >> m >> q;
@@ -39,10 +33,6 @@ int main() {
     for(int i = 0; i < q; i++){
         cin >> a[i] >> b[i] >> c[i] >> d[i];
     }
-    int res = 0;
-    vector<int> A(1,1);
-    dfs(A, res);
+    dfs(vector<int>(1, 1));
     cout << ans << endl;
-
-    return 0;
 }

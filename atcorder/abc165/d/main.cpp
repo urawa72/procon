@@ -1,14 +1,23 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define all(v) v.begin(), v.end()
+#define ALL(v) v.begin(), v.end()
+#define V vector
+#define P pair
+typedef long double ld;
 typedef long long ll;
+const int MOD =  1000000007;
+const int IINF = INT_MAX;
+const ll INF = 1LL << 60;
+
 
 int main() {
     ll a, b, n; cin >> a >> b >> n;
+    if(n < b){
+        cout << (a * n) / b << endl;
+    }else{
+        cout << (a * (b - 1)) / b << endl;
+    }
 
-    ll x = n;
-    if(b <= n) x = b - 1 ? b - 1 : 1;
-    ll res = floor(a * x / b) - a * floor(x / b);
-    cout << res << endl;
+    return 0;
 }

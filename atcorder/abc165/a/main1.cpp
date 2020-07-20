@@ -1,20 +1,14 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define ALL(v) v.begin(), v.end()
-#define V vector
-#define P pair
-typedef long double ld;
+#define all(v) v.begin(), v.end()
 typedef long long ll;
-const int MOD =  1000000007;
-const int IINF = INT_MAX;
-const ll INF = 1LL << 60;
-
+const int INT_INF = 1e9;
+const ll INF = 1LL << 30;
 
 int main() {
     int k; cin >> k;
     int a, b; cin >> a >> b;
-
     for(int i = a; i <= b; i++){
         if(i % k == 0){
             cout << "OK" << endl;
@@ -22,6 +16,4 @@ int main() {
         }
     }
     cout << "NG" << endl;
-
-    return 0;
 }

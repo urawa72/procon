@@ -1,39 +1,41 @@
 #include <bits/stdc++.h>
-#include <utility>
 using namespace std;
 
-#define all(v) v.begin(), v.end()
+#define ALL(v) v.begin(), v.end()
 #define V vector
 #define P pair
-typedef long long ll;
+#define ld long double
+#define ll long long
+
+const int MOD =  1000000007;
+const int IINF = INT_MAX;
+const ll INF = 1LL << 60;
+
 
 int main() {
-    ll n, m; cin >> n >> m;
-    // 2つの配列で管理
-    V<V<ll> > v(n + 1);
-    V<P<ll, ll> > w(m);
+    int n, m; cin >> n >> m;
+    map<int, set<int> > mp;
+    V<P<int, int> > v(m);
     for(int i = 0; i < m; i++){
-        ll p, y; cin >> p >> y;
-        v[p].push_back(y);
-        w[i] = make_pair(p, y);
+        int p, y; cin >> p >> y;
+        mp[p].insert(y);
+        v[i] = make_pair(p, y);
     }
 
-    // 各県でソートしてyをkeyのmapに順番を記録しておく
-    map<ll, ll> x;
-    for(int i = 1; i <= n; i++){
-        sort(all(v[i]));
-        for(int j = 0; j < v[i].size(); j++){
-            x[v[i][j]] = j + 1;
+    map<int, int> mp2;
+    for(auto p : mp){
+        int i = 1;
+        for(auto s : p.second){
+            mp2[s] = i;
+            i++;
         }
     }
 
-    // 元の配列で順番に出力
     for(int i = 0; i < m; i++){
-        int a = w[i].first;
-        int b = x[w[i].second];
-        printf("%06d", a);
-        printf("%06d", b);
+        printf("%06d%06d", v[i].first, mp2[v[i].second]);
         cout << "\n";
     }
 
+
+    return 0;
 }
