@@ -4,40 +4,54 @@ using namespace std;
 #define ALL(v) v.begin(), v.end()
 #define V vector
 #define P pair
-typedef long long ll;
-const int INT_INF = 1e9;
-const ll INF = 1LL << 30;
-const ll MOD = 1e9 + 7;
+#define ld long double
+#define ll long long
+
+const int MOD =  1000000007;
+const int IINF = INT_MAX;
+const ll INF = 1LL << 60;
 
 
 int main() {
     int n; cin >> n;
-    V<ll> x(n), y(n), h(n);
-    for(int i = 0; i < n; i++) cin >> x[i] >> y[i] >> h[i];
-
-    int s;
+    V<int> x(n), y(n), h(n);
     for(int i = 0; i < n; i++){
-        if(h[i]){
-            s = i;
-            break;
-        }
+        cin >> x[i] >> y[i] >> h[i];
     }
 
     for(int i = 0; i <= 100; i++){
         for(int j = 0; j <= 100; j++){
-            bool flag = true;
-            ll H = abs(x[s] - i) + abs(y[s] - j) + h[s];
+            int H = -1;
             for(int k = 0; k < n; k++){
-                ll tmp = max(H - abs(x[k] - i) - abs(y[k] - j), 0LL);
-                if(tmp != h[k]){
-                    flag = false;
-                    break;
+                if(h[k] > 0){
+                    int tmp = h[k] + abs(x[k] - i) + abs(y[k] - j);
+                    if(H == -1){
+                        H = tmp;
+                    }else{
+                        if(H != tmp){
+                            H = -2;
+                            break;
+                        }
+                    }
                 }
             }
-            if(flag){
-                cout << i << " " << j << " " << H << endl;
-                return 0;
+            if(H == -2) continue;
+
+            for(int k = 0; k < n; k++){
+                if(h[k] == 0){
+                    int tmp = abs(x[k] - i) + abs(y[k] - j);
+                    if(H > tmp){
+                        H = -2;
+                        break;
+                    }
+                }
             }
+            if(H == -2) continue;
+
+            cout << i << " " << j << " " << H << endl;
+            return 0;
         }
     }
+
+    return 0;
 }
