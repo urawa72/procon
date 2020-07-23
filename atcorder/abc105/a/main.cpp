@@ -13,13 +13,9 @@ const ll INF = 1LL << 60;
 
 
 int main() {
-    int n; cin >> n;
-    if(n == 1){
-        cout << "Hello World" << endl;
-    }else{
-        int a, b; cin >> a >> b;
-        cout << a + b << endl;
-    }
+    int n, k; cin >> n >> k;
 
+    if(n % k == 0) cout << 0 << endl;
+    else cout << 1 << endl;
     return 0;
 }
