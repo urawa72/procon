@@ -12,9 +12,16 @@ const ll INF = 1LL << 60;
 
 
 int main() {
-    int a, b; cin >> a >> b;
-    if(a & 1 && b & 1) cout << "Yes" << endl;
-    else cout << "No" << endl;
+    int h, w, n; cin >> h >> w >> n;
+
+    int ans = IINF;
+    for(int i = 0; i <= h; i++){
+        for(int j = 0; j <= w; j++){
+            int sum = i * h + j * w - i * j;
+            if(sum >= n) ans = min(ans, i + j);
+        }
+    }
+    cout << ans << endl;
 
     return 0;
 }

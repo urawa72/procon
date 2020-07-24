@@ -12,9 +12,20 @@ const ll INF = 1LL << 60;
 
 
 int main() {
-    int a, b; cin >> a >> b;
-    if(a & 1 && b & 1) cout << "Yes" << endl;
-    else cout << "No" << endl;
+    ll n, k, s; cin >> n >> k >> s;
+
+    ll s2 = s;
+    if(s == 1e9) s2--;
+    else s2++;
+
+    for(int i = 0; i < n; i++){
+        if(0 < k){
+            cout << s << endl;
+            k--;
+        }else{
+            cout << s2 << endl;
+        }
+    }
 
     return 0;
 }
