@@ -14,6 +14,7 @@ const ll INF = 1LL << 60;
 int main() {
     ll n, k, s; cin >> n >> k >> s;
 
+    // sが最大値だったら1を引く
     ll s2 = s;
     if(s == 1e9) s2--;
     else s2++;

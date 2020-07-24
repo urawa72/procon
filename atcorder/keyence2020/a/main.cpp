@@ -14,14 +14,7 @@ const ll INF = 1LL << 60;
 int main() {
     int h, w, n; cin >> h >> w >> n;
 
-    int ans = IINF;
-    for(int i = 0; i <= h; i++){
-        for(int j = 0; j <= w; j++){
-            int sum = i * h + j * w - i * j;
-            if(sum >= n) ans = min(ans, i + j);
-        }
-    }
-    cout << ans << endl;
+    cout << (n + max(h, w) - 1) / max(h, w) << endl;
 
     return 0;
 }
