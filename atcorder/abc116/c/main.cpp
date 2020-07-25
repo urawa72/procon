@@ -1,24 +1,28 @@
 #include <bits/stdc++.h>
+#include <numeric>
 using namespace std;
 
-#define all(v) v.begin(), v.end()
+#define ALL(v) v.begin(), v.end()
 #define V vector
 #define P pair
-typedef long long ll;
-const int INT_INF = 1e9;
-const ll INF = 1LL << 30;
+using ll = long long;
+using ld = long double;
+const int MOD =  1000000007;
+const ll INF = 1LL << 60;
+
 
 int main() {
     int n; cin >> n;
-    V<int> v(n);
-    for(int i = 0; i < n; i++) cin >> v[i];
+    V<int> h(n);
+    for(int i = 0; i < n; i++) cin >> h[i];
 
-    int ans = v[0];
-    for(int i = 1; i < n; i++){
-        if(v[i] > v[i - 1]){
-            ans += v[i] - v[i - 1];
-        }
+    V<int> sums;
+    sums.push_back(h[0]);
+    for(int i = 0; i < n - 1; i++){
+        int tmp = h[i + 1] - h[i];
+        if(0 < tmp) sums.push_back(tmp);
     }
-    cout << ans << endl;
+    cout << accumulate(ALL(sums), 0) << endl;
 
+    return 0;
 }
