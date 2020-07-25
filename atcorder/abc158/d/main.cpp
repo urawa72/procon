@@ -26,7 +26,7 @@ int main() {
             int f; cin >> f;
             char c; cin >> c;
             if(f == 1){
-                if(f == 1 && flip) deq.push_back(c);
+                if(flip) deq.push_back(c);
                 else deq.push_front(c);
             }else{
                 if(flip) deq.push_front(c);
@@ -38,12 +38,9 @@ int main() {
     }
 
     if(flip) reverse(ALL(deq));
-    while(!deq.empty()){
-        char c = deq.front();
-        deq.pop_front();
-        cout << c;
-    }
-    cout << "\n";
+    string ans;
+    for(auto c : deq) ans += c;
+    cout << ans << endl;
 
     return 0;
 }
