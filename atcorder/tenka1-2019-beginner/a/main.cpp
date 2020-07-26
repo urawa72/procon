@@ -11,8 +11,10 @@ const ll INF = 1LL << 60;
 
 
 int main() {
-    int n, i; cin >> n >> i;
-    cout << n - i + 1 << endl;
+    int a,b,c; cin >> a >> b >> c;
+    if(a <= c && c <= b) cout << "Yes" << endl;
+    else if(b <= c && c <= a) cout << "Yes" << endl;
+    else cout << "No" << endl;
 
     return 0;
 }

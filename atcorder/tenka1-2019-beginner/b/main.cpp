@@ -11,8 +11,15 @@ const ll INF = 1LL << 60;
 
 
 int main() {
-    int n, i; cin >> n >> i;
-    cout << n - i + 1 << endl;
+    int n; cin >> n;
+    string s; cin >> s;
+    int k; cin >> k;
+    k--;
+    for(int i = 0; i < n; i++){
+        if(s[i] == s[k]) cout << s[i];
+        else cout << '*';
+    }
+    cout << '\n';
 
     return 0;
 }

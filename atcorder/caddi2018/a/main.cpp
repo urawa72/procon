@@ -11,8 +11,13 @@ const ll INF = 1LL << 60;
 
 
 int main() {
-    int n, i; cin >> n >> i;
-    cout << n - i + 1 << endl;
+    int n; cin >> n;
+    int ans = 0;
+    while(0 < n){
+        if(n % 10 == 2) ans++;
+        n /= 10;
+    }
+    cout << ans << endl;
 
     return 0;
 }

@@ -16,19 +16,11 @@ int main() {
     V<int> a(n);
     for(int i = 0; i < n; i++) cin >> a[i];
 
-    int y = 1000;
-    int c = 0;
-    for(int i = 0; i < n; i++){
-        if(a[i] <= a[i + 1]){
-            c = y / a[i];
-            y -= (a[i] * c);
-            while(i + 1 < n) {
-                if(a[i] <= a[i + 1]) i++;
-                else break;
-            }
-            y += (c * a[i]);
-            c = 0;
-        }
+    ll y = 1000;
+    for(int i = 0; i < n - 1; i++){
+        ll s = 0;
+        if(a[i] < a[i + 1]) s = y / a[i];
+        y += (a[i + 1] - a[i]) * s;
     }
     cout << y << endl;
 

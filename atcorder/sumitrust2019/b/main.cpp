@@ -11,8 +11,14 @@ const ll INF = 1LL << 60;
 
 
 int main() {
-    int n, i; cin >> n >> i;
-    cout << n - i + 1 << endl;
+    int n; cin >> n;
+    for(int i = 1; i <= n; i++){
+        if((int)(i * 1.08) == n){
+            cout << i << endl;
+            return 0;
+        }
+    }
+    cout << ":(" << endl;
 
     return 0;
 }

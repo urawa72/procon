@@ -11,8 +11,14 @@ const ll INF = 1LL << 60;
 
 
 int main() {
-    int n, i; cin >> n >> i;
-    cout << n - i + 1 << endl;
+    int x; cin >> x;
+
+    int y = x / 100;
+    if(y * 100 <= x && x <= y * 105){
+        cout << 1 << endl;
+        return 0;
+    }
+    cout << 0 << endl;
 
     return 0;
 }

@@ -1,13 +1,20 @@
 #!/bin/sh
 
-if [ $# != 1 ]; then
+if [ $# == 0 ]; then
   echo "引数を指定してください"
   exit 1
 fi
 
+tasks=""
+if [ $# == 2 ]; then
+  tasks=$2
+else
+  tasks=$1
+fi
+
 base1="https://atcoder.jp/contests/"
 base2="/tasks/"
-url=$base1$1$base2$1
+url=$base1$1$base2$tasks
 
 for i in a b c d
 do
