@@ -1,41 +1,46 @@
 #include <bits/stdc++.h>
-#include <numeric>
 using namespace std;
 
 #define ALL(v) v.begin(), v.end()
 #define V vector
 #define P pair
-typedef long long ll;
-const int INT_INF = 1e9;
-const ll INF = 1LL << 30;
-const ll MOD = 1e9 + 7;
+using ll = long long;
+using ld = long double;
+const int MOD = 1e9+7;
+const ll INF = 1LL << 60;
 
 
 int main() {
     int n; cin >> n;
-    V<int> v(n);
+    V<int> a(n);
     int sum = 0;
     for(int i = 0; i < n; i++){
-        cin >> v[i];
-        sum += v[i];
+        cin >> a[i];
+        sum += a[i];
     }
 
+    // 割り切れなければ均等に配置できないので終了
     if(sum % n != 0){
         cout << -1 << endl;
         return 0;
     }
 
-    V<int> w(n + 1);
-    w[0] = 0;
+    // 累積和
+    V<int> sums(n + 1);
     for(int i = 0; i < n; i++){
-        w[i + 1] = w[i] + v[i];
+        sums[i + 1] = sums[i] + a[i];
     }
 
-    // 島iの時点で平均*i番目までの人数いなければ橋が必要
-    int ans = 0, b = sum / n;
+    // 一つの島に配置する人数
+    int m = sum / n;
+
+    int ans = 0;
     for(int i = 1; i <= n; i++){
-        if(w[i] <= b * i && b * (n - i) == (w[n] - w[i])) continue;
-        ans++;
+        // i番目の島には平均*iの人数が必要
+        // 過不足あれば橋を架ける対象の島
+        if(m * i < sums[i] || sums[i] < m * i) ans++;
     }
     cout << ans << endl;
+
+    return 0;
 }
