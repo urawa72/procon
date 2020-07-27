@@ -1,12 +1,12 @@
 #!/bin/sh
 
-if [ $# == 0 ]; then
+if [ $# -eq 0 ]; then
   echo "引数を指定してください"
   exit 1
 fi
 
 tasks=""
-if [ $# == 2 ]; then
+if [ $# -eq 2 ]; then
   tasks=$2
 else
   tasks=$1

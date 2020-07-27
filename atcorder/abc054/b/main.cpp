@@ -1,36 +1,50 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define all(v) v.begin(), v.end()
+#define ALL(v) v.begin(), v.end()
 #define V vector
 #define P pair
-typedef long long ll;
-const int INT_INF = 1e9;
-const ll INF = 1LL << 30;
+using ll = long long;
+using ld = long double;
+const int MOD = 1e9+7;
+const ll INF = 1LL << 60;
+
 
 int main() {
     int n, m; cin >> n >> m;
     V<string> a(n);
-    V<string> b(m);
     for(int i = 0; i < n; i++) cin >> a[i];
+    V<string> b(m);
     for(int i = 0; i < m; i++) cin >> b[i];
 
-    bool ans = false;
-    // aを固定して考える
-    for(int i = 0; i < n; i++){
-        for(int j = 0; j < n; j++){
-            // mを足して場外に出る場合は調査しない
-            if(i + m - 1 >= n || j + m - 1 >= n) continue;
+    // Aのループ
+    for(int i = 0; i < n - m + 1; i++){
+        for(int j = 0; j < n - m + 1; j++){
+            int y = i;
+            int x = j;
             bool flag = true;
+            // Bのループ
             for(int k = 0; k < m; k++){
                 for(int l = 0; l < m; l++){
-                    // bのループ内でaも遷移させる
-                    if(a[i + k][j + l] != b[k][l]) flag = false;
+                    // 一致してたらAを手動でインクリメント
+                    if(b[k][l] == a[y][x]) x++;
+                    else{
+                        flag = false;
+                        break;
+                    }
                 }
+                // 1行見終わったら1行ずらす、xの開始値を元に戻す
+                y++;
+                x = j;
             }
-            if(flag) ans = true;
+            // falseでなければ一致したので終了
+            if(flag){
+                cout << "Yes" << endl;
+                return 0;
+            }
         }
     }
-    if(ans) cout << "Yes" << endl;
-    else cout << "No" << endl;
+    cout << "No" << endl;
+
+    return 0;
 }
