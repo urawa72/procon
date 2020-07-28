@@ -4,24 +4,34 @@ using namespace std;
 #define ALL(v) v.begin(), v.end()
 #define V vector
 #define P pair
-typedef long long ll;
-const int INT_INF = 1e9;
-const ll INF = 1LL << 30;
-const ll MOD = 1e9 + 7;
+using ll = long long;
+using ld = long double;
+const int MOD = 1e9+7;
+const ll INF = 1LL << 60;
+
 
 int main() {
     int n, m; cin >> n >> m;
 
-    // 鶴亀算
-    // 大人をループで
+    // 老人2人=大人1人赤ちゃん1人なので
+    // 老人が0/1だけ考えれば良い
     for(int a = 0; a <= n; a++){
-        int c = m - 2 * a - 3 * (n - a); // 赤ちゃん
-        int b = n - a - c; // 老人
-        if(0 <= c && 0 <= b){
-            cout << a << " " << b << " " << c << endl;
+        // 老人が1人
+        int b = 1;
+        int c = n - b - a;
+        if(0 <= c && a * 2 + b * 3 + c * 4 == m){
+            cout << a << ' ' << b << ' ' << c << endl;
+            return 0;
+        }
+        // 老人が0人
+        b = 0;
+        c = n - a;
+        if(0 <= c && a * 2 + c * 4 == m){
+            cout << a << ' ' << b << ' ' << c << endl;
             return 0;
         }
     }
     cout << "-1 -1 -1" << endl;
 
+    return 0;
 }

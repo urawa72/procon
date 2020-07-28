@@ -11,9 +11,11 @@ const ll INF = 1LL << 60;
 
 
 int main() {
-    ll n; cin >> n;
-    if(n % 2 == 0) cout << n << endl;
-    else cout << 2 * n << endl;
+    string s; cin >> s;
+    string t = s;
+    reverse(ALL(t));
+    if(s.size() == 2) cout << s << endl;
+    else cout << t << endl;
 
     return 0;
 }

@@ -11,9 +11,15 @@ const ll INF = 1LL << 60;
 
 
 int main() {
-    ll n; cin >> n;
-    if(n % 2 == 0) cout << n << endl;
-    else cout << 2 * n << endl;
+    string s; cin >> s;
+
+    if (s == "hi" ||
+        s == "hihi" ||
+        s == "hihihi" ||
+        s == "hihihihi" ||
+        s == "hihihihihi"
+    ) cout << "Yes" << endl;
+    else cout << "No" << endl;
 
     return 0;
 }
