@@ -4,29 +4,28 @@ using namespace std;
 #define ALL(v) v.begin(), v.end()
 #define V vector
 #define P pair
-#define ld long double
-#define ll long long
-#define mod 1000000007
-#define IINF INT_MAX
-#define INF 1LL << 30
+using ll = long long;
+using ld = long double;
+const int MOD = 1e9+7;
+const ll INF = 1LL << 60;
 
 
 int main() {
     int n, m; cin >> n >> m;
-    V<int> b(n + 1);
+    V<bool> b(n + 1, false);
     for(int i = 0; i < m; i++){
-        int x; cin >> x;
-        b[x] = 1;
+        int a; cin >> a;
+        b[a] = true;
     }
 
-    // 前からdp
-    V<int> dp(n + 10);
+    V<int> dp(n + 5);
     dp[0] = 1;
-    for(int i = 0; i <= n - 1; i++){
+    for(int i = 0; i < n; i++){
         if(b[i]) continue;
-        if(!b[i + 1]) (dp[i + 1] += dp[i]) %= mod;
-        if(!b[i + 2]) (dp[i + 2] += dp[i]) %= mod;
+        if(!b[i + 1]) dp[i + 1] += dp[i], dp[i + 1] %= MOD;
+        if(!b[i + 2]) dp[i + 2] += dp[i], dp[i + 2] %= MOD;
     }
     cout << dp[n] << endl;
+
     return 0;
 }
