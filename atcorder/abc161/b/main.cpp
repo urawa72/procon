@@ -1,33 +1,32 @@
 #include <bits/stdc++.h>
+#include <numeric>
 using namespace std;
 
-#define all(v) v.begin(), v.end()
-#define rep(i, n) REP(i, 0, n)
-#define REP(i, x, n) for (int i = x; i < n; i++)
-#define REPE(i, x, n) for (int i = x; i <= n; i++)
-#define OP(x) cout << x << endl;
-template<typename T> T gcd(T a, T b) { return b ? gcd(b, a % b) : a; }
-template<typename T> T lcm(T a, T b) { return a / gcd(a, b) * b; }
-template<class T> void chmax(T& a, T b) { if(a > b) a = b; }
-template<class T> void chmin(T& a, T b) { if(a < b) b = a; }
-typedef long long ll;
+#define ALL(v) v.begin(), v.end()
+#define V vector
+#define P pair
+using ll = long long;
+using ld = long double;
+const int MOD = 1e9+7;
+
 
 int main() {
     int n, m; cin >> n >> m;
-    vector<int> v(n);
-    int sum = 0;
-    rep(i, n){
-        cin >> v[i];
-        sum += v[i];
-    }
-    sort(all(v));
-    bool flag = true;
-    for(int i = 1; i <= m; i++){
-        if(v[n - i] * 4 * m < sum){
-            flag = false;
-            break;
+    V<int> a(n);
+    for(int i = 0; i < n; i++) cin >> a[i];
+    int s = accumulate(ALL(a), 0);
+
+    int cnt = 0;
+    for(int i = 0; i < n; i++){
+        if(a[i] * 4 * m >= s) cnt++;
+        if(cnt == m){
+            cout << "Yes" << endl;
+            return 0;
         }
     }
-    if(flag) cout << "Yes" << endl;
-    else cout << "No" << endl;
+    cout << "No" << endl;
+
+
+
+    return 0;
 }
