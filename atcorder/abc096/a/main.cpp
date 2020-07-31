@@ -9,12 +9,12 @@ using ld = long double;
 const int MOD = 1e9 + 7;
 
 int main() {
-    int a, b, c, d;
-    cin >> a >> b >> c >> d;
-    if ((abs(a - b) <= d && abs(b - c) <= d) || abs(a - c) <= d)
-        cout << "Yes" << endl;
+    int a, b;
+    cin >> a >> b;
+    if (a <= b)
+        cout << a << endl;
     else
-        cout << "No" << endl;
+        cout << a - 1 << endl;
 
     return 0;
 }
