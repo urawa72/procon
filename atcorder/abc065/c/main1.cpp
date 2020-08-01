@@ -1,12 +1,11 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define ALL(v) v.begin(), v.end()
+#define all(v) v.begin(), v.end()
 #define V vector
 #define P pair
-using ll = long long;
-using ld = long double;
-const int MOD = 1e9+7;
+typedef long long ll;
+const ll MOD = 1e9 + 7;
 
 ll factorial(ll n) {
     ll ans = 1;
@@ -18,19 +17,13 @@ ll factorial(ll n) {
 }
 
 int main() {
-    ll n,m; cin >> n >>m;
-    if(abs(n - m) > 1){
-        cout << 0 << endl;
-        return 0;
-    }
+    ll n, m; cin >> n >> m;
 
     if(n == m){
         cout << factorial(n) * factorial(m) % MOD * 2 % MOD << endl;
-    }else{
+    }else if(n - 1 == m || m - 1 == n){
         cout << factorial(n) * factorial(m) % MOD << endl;
+    }else{
+        cout << 0 << endl;
     }
-
-
-
-    return 0;
 }
