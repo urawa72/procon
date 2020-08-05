@@ -6,28 +6,30 @@ using namespace std;
 #define P pair
 using ll = long long;
 using ld = long double;
-const ll MOD = 1e9+7;
+const int MOD = 1e9+7;
 
 
 int main() {
-    int n; cin >> n;
-    ll k; cin >> k;
-    V<int> a(n);
+    ll n, k; cin >> n >> k;
+    V<ll> a(n);
     for(int i = 0; i < n; i++) cin >> a[i];
 
     ll ans = 0;
-    ll tmp = (k * (k - 1) / 2) % MOD;
+    ll comb = (k * (k - 1) / 2) % MOD;
     for(int i = 0; i < n; i++){
-        int f = 0, b = 0;
+        // 前後で自分より小さい数を自分より前と後で分けてカウントしておく
+        ll be = 0, af = 0;
         for(int j = 0; j < i; j++){
-            if(a[i] > a[j]) f++;
+            if(a[j] < a[i]) be++;
         }
         for(int j = i + 1; j < n; j++){
-            if(a[i] > a[j]) b++;
+            if(a[j] < a[i]) af++;
         }
-        ans = (ans + (b * k) + ((b + f) * tmp)) % MOD;
+        // 数列内の自分より後に存在する小さい数はk回カウントする
+        // 数列間はkから2つ選ぶ組み合わせの総数に
+        // 数列内の全ての自分より小さい数の総数を掛ければ良い
+        ans = (ans + (k * af) + (comb * (be + af))) % MOD;
     }
-
     cout << ans << endl;
 
     return 0;
