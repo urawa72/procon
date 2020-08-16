@@ -4,20 +4,25 @@ using namespace std;
 #define ALL(v) v.begin(), v.end()
 #define V vector
 #define P pair
-typedef long long ll;
-const int INT_INF = 1e9;
-const ll INF = 1LL << 30;
-const ll MOD = 1e9 + 7;
+using ll = long long;
 
 
 int main() {
-    string s; cin >> s;
     string key = "WBWBWWBWBWBWWBWBWWBWBWBWWBWBWWBWBWBW";
-    if(s == key.substr(0, 20)) cout << "Do" << endl;
-    if(s == key.substr(2, 20)) cout << "Re" << endl;
-    if(s == key.substr(4, 20)) cout << "Mi" << endl;
-    if(s == key.substr(5, 20)) cout << "Fa" << endl;
-    if(s == key.substr(7, 20)) cout << "So" << endl;
-    if(s == key.substr(9, 20)) cout << "La" << endl;
-    if(s == key.substr(11, 20)) cout << "Si" << endl;
+    string s; cin >> s;
+
+    for(int i = 0; i < 12; i++){
+        if(s == key.substr(i, 20)){
+            if(i == 0) cout << "Do" << endl;
+            if(i == 2) cout << "Re" << endl;
+            if(i == 4) cout << "Mi" << endl;
+            if(i == 5) cout << "Fa" << endl;
+            if(i == 7) cout << "So" << endl;
+            if(i == 9) cout << "La" << endl;
+            if(i == 11) cout << "Si" << endl;
+            return 0;
+        }
+    }
+
+    return 0;
 }
