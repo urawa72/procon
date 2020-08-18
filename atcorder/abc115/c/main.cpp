@@ -1,21 +1,23 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define all(v) v.begin(), v.end()
-#define rep(i, n) for (int i = 0; i < n; i++)
-typedef long long ll;
+#define ALL(v) v.begin(), v.end()
+#define V vector
+#define P pair
+using ll = long long;
+
 
 int main() {
-    ll n, k; cin >> n >> k;
-    vector<ll> h(n);
-    for(ll i = 0; i < n; i++){
-        cin >> h[i];
-    }
-    sort(all(h));
+    int n, k; cin >> n >> k;
+    V<ll> h(n);
+    for(int i = 0; i < n; i++) cin >> h[i];
+    sort(ALL(h));
+
     ll ans = 1LL << 60;
-    k--;
-    for(int i = k; i < n; i++){
-        ans = min(ans, h[i] - h[i - k]);
+    for(int i = 0; i < n - k + 1; i++){
+        ans = min(ans, abs(h[i] - h[i + k - 1]));
     }
     cout << ans << endl;
+
+    return 0;
 }
