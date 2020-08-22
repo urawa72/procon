@@ -4,7 +4,11 @@ using namespace std;
 #define ALL(v) v.begin(), v.end()
 #define V vector
 #define P pair
-using ll = long long;
+#define ld long double
+#define ll long long
+#define mod 1000000007
+#define IINF INT_MAX
+#define INF 1LL << 30
 
 
 int main() {
@@ -18,19 +22,21 @@ int main() {
             v[i].push_back(s);
         }
     }
-    V<int> w(m);
-    for(int i = 0; i < m; i++) cin >> w[i];
+    V<int> p(m);
+    for(int i = 0; i < m; i++) cin >> p[i];
 
     int ans = 0;
     for(int bit = 0; bit < (1 << n); bit++){
         bool flag = true;
-        for(int j = 0; j < m; j++){
+        for(int i = 0; i < m; i++){
             int cnt = 0;
-            for(int k = 0; k < (int)v[j].size(); k++){
-                if(bit & (1 << v[j][k])) cnt++;
+            for(int k : v[i]){
+                if(bit & (1 << k)) cnt++;
             }
-            if(cnt % 2 != w[j]){
+            cnt %= 2;
+            if(cnt != p[i]){
                 flag = false;
+                break;
             }
         }
         if(flag) ans++;
