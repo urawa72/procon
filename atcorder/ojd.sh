@@ -20,7 +20,7 @@ for i in a b c d
 do
   mkdir -p $1"/"$i
   cd $1"/"$i
-  # touch main.cpp
+  touch main.cpp
   # touch main.py
   echo $url"_"$i
   oj d $url"_"$i
