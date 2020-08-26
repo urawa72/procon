@@ -1,32 +1,31 @@
 #include <bits/stdc++.h>
-#include <climits>
+#include <numeric>
 using namespace std;
 
 #define ALL(v) v.begin(), v.end()
 #define V vector
 #define P pair
-using ll = long long;
+typedef long long ll;
+const int IINF = INT_MAX;
+const ll INF = 1LL << 30;
+const ll MOD = 1e9 + 7;
 
 
 int main() {
     int n; cin >> n;
     V<ll> a(n);
-    // あらかじめ絶対値考慮前の値で数列をつくっておく
     for(int i = 0; i < n; i++){
         ll x; cin >> x;
-        x -= (i + 1);
+        x = x - (i + 1);
         a[i] = x;
     }
 
-    // 中央値をbに設定するのが最適になる
     sort(ALL(a));
-    ll b = a[n / 2];
+    ll m = a[n / 2];
     ll ans = 0;
     for(int i = 0; i < n; i++){
-        ans += abs(a[i] - b);
+        ans += abs(a[i] - m);
     }
     cout << ans << endl;
-
-
     return 0;
 }

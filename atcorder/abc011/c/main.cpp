@@ -4,29 +4,43 @@ using namespace std;
 #define ALL(v) v.begin(), v.end()
 #define V vector
 #define P pair
-typedef long long ll;
-const int INT_INF = 1e9;
-const ll INF = 1LL << 30;
-const ll MOD = 1e9 + 7;
+using ll = long long;
 
-int n, ng1, ng2, ng3;
+int n, a, b, c;
 
 int main() {
-    cin >> n >> ng1 >> ng2 >> ng3;
+    int n; cin >> n;
+    V<int> nums(3);
+    for(int i = 0; i < n; i++) cin >> nums[i];
+    sort(ALL(nums));
+    int a = nums[0], b = nums[1], c = nums[2];
 
-    if(n == ng1 || n == ng2 || n == ng3){
+    if(n == a || n == b || n == c) {
         cout << "NO" << endl;
         return 0;
     }
 
-    V<int> dp(n + 10, INT_INF);
-    dp[n] = 0;
-    for(int i = n - 1; i >= 0; i--){
-        if(i == ng1 || i == ng2 || i == ng3) continue;
-        dp[i] = min({dp[i + 1], dp[i + 2], dp[i + 3]}) + 1;
+    if(a + 1 == b && b + 1 == c) {
+        cout << "NO" << endl;
+        return 0;
     }
 
-    if(dp[0] <= 100) cout << "YES" << endl;
+    for(int i = 0; i < 100; i++){
+        if(n == 0) break;
+        if(0 <= n - 3){
+            if(n - 3 == a || n - 3 == b || n - 3 == c) {
+                if(n - 2 == a || n - 2 == b || n - 2 == c)  n -= 1;
+                else n -= 2;
+            }else{
+                n -= 3;
+            }
+        }else{
+            if(0 <= n - 2) n -= 2;
+            else n -= 1;
+        }
+    }
+    if(n == 0) cout << "YES" << endl;
     else cout << "NO" << endl;
 
+    return 0;
 }
