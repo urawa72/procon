@@ -4,21 +4,20 @@ using namespace std;
 #define ALL(v) v.begin(), v.end()
 #define V vector
 #define P pair
-typedef long long ll;
-const int INT_INF = 1e9;
-const ll INF = 1LL << 30;
-const ll MOD = 1e9 + 7;
+using ll = long long;
 
 
 int main() {
-    ll n, k; cin >> n >> k;
+    int n, k; cin >> n >> k;
 
-    map<ll, ll> m;
+    ll x = 0, y = 0;
     for(int i = 1; i <= n; i++){
-        m[i % k]++;
+        if(i % k == 0) x++;
+        if(i % k == k / 2) y++;
     }
 
-    ll r = k / 2;
-    if(k % 2 == 0) cout << m[0] * m[0] * m[0] + m[r] * m[r] * m[r] << endl;
-    else cout << m[0] * m[0] * m[0] << endl;
+    if(k & 1) cout << x * x * x << endl;
+    else cout << x * x * x + y * y * y << endl;
+
+    return 0;
 }
