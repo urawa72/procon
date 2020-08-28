@@ -5,29 +5,22 @@ using namespace std;
 #define V vector
 #define P pair
 using ll = long long;
-using ld = long double;
-const int MOD = 1e9+7;
-const ll INF = 1LL << 60;
-
 
 int main() {
-    int n, m; cin >> n >> m;
+    int n, m;
+    cin >> n >> m;
 
-    // 老人2人=大人1人赤ちゃん1人なので
-    // 老人が0/1だけ考えれば良い
-    for(int a = 0; a <= n; a++){
-        // 老人が1人
-        int b = 1;
-        int c = n - b - a;
-        if(0 <= c && a * 2 + b * 3 + c * 4 == m){
-            cout << a << ' ' << b << ' ' << c << endl;
-            return 0;
-        }
-        // 老人が0人
-        b = 0;
-        c = n - a;
-        if(0 <= c && a * 2 + c * 4 == m){
-            cout << a << ' ' << b << ' ' << c << endl;
+    // 奇数だったら老人1人
+    // それ以外は大人と赤ちゃんで成立するので0人で良い
+    int c = 0;
+    if (m & 1) {
+        m -= 3;
+        n--;
+        c = 1;
+    }
+    for (int i = 0; i <= n; i++) {
+        if (m - i * 4 - (n - i) * 2 == 0) {
+            cout << n - i << " " << c << " " << i << endl;
             return 0;
         }
     }

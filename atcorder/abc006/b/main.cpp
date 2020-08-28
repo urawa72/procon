@@ -1,23 +1,31 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define all(v) v.begin(), v.end()
+#define ALL(v) v.begin(), v.end()
 #define V vector
 #define P pair
-#define M map
-typedef long long ll;
-const int INT_INF = 1e9;
-const ll INF = 1LL << 30;
+using ll = long long;
+
 
 int main() {
-    ll n; cin >> n;
-    ll MOD = 10007;
+    int n; cin >> n;
 
-    V<ll> v(n);
-    v[0] = 0, v[1] = 0, v[2] = 1;
-
-    for(ll i = 3; i < n; i++){
-        v[i] = (v[i - 1] + v[i - 2] + v[i - 3]) % MOD;
+    if(n <= 2){
+        cout << 0 << endl;
+        return 0;
     }
-    cout << v[n - 1] << endl;
+    if(n == 3){
+        cout << 1 << endl;
+        return 0;
+    }
+
+    V<ll> v(1000010, 0);
+    v[3] = 1;
+    for(int i = 4; i <= n; i++){
+        v[i] = v[i - 1] + v[i - 2] + v[i - 3];
+        v[i] %= 10007;
+    }
+    cout << v[n] << endl;
+
+    return 0;
 }
