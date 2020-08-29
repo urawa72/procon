@@ -1,31 +1,33 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define rep(i, n) REP(i, 0, n)
-#define REP(i, x, n) for (int i = x; i < n; i++)
-#define OP(x) cout << x << endl;
+#define ALL(v) v.begin(), v.end()
+#define V vector
+#define P pair
+using ll = long long;
+
 
 int main() {
     int n, m; cin >> n >> m;
-    int s[m], c[m];
-    rep(i, m) cin >> s[i] >> c[i];
+    V<int> s(m), c(m);
+    for(int i = 0; i < m; i++) cin >> s[i] >> c[i];
 
-    int ans = -1;
-    rep(i, 1000){
-        // 文字列にした方がチェックしやすい
+    for(int i = 0; i < 1000; i++){
         string tmp = to_string(i);
-        if(tmp.length() != n) continue;
+        if((int)tmp.size() != n) continue;
         bool flag = true;
-        // s[i]の桁がc[i]じゃなければあてはまらない
-        rep(j, m){
-            if(tmp[s[j] - 1] - '0' != c[j]) flag = false;
+        for(int j = 0; j < m; j++){
+            if(tmp[s[j] - 1] - '0' != c[j]){
+                flag = false;
+                break;
+            }
         }
-        // 小さい値から判定しているのでminは不要
         if(flag){
-            ans = i;
-            break;
+            cout << i << endl;
+            return 0;
         }
     }
-    OP(ans);
-}
+    cout << -1 << endl;
 
+    return 0;
+}
