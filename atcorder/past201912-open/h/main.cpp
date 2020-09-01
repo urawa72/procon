@@ -11,8 +11,8 @@ int main() {
     int n; cin >> n;
     V<ll> c(n);
     for(int i = 0; i < n; i++) cin >> c[i];
-    ll odd_min = 1e9 + 1;
-    ll all_min = 1e9 + 1;
+    ll odd_min = 1000000001;
+    ll all_min = 1000000001;
     for(int i = 0; i < n; i++){
         if(i % 2 == 0) odd_min = min(c[i], odd_min);
         all_min = min(c[i], all_min);
@@ -30,6 +30,7 @@ int main() {
             if(y % 2 == 0) tmp -= odd_sum;
             tmp -= all_sum;
             if(0 <= tmp - z){
+                tmp -= z;
                 c[y] -= z;
                 c2[y] += z;
                 all_min = min(tmp, all_min);
@@ -50,7 +51,7 @@ int main() {
                 all_min -= z;
                 odd_min -= z;
                 all_sum += z;
-                all_min = min(all_min, odd_min);
+                all_min = min(odd_min, all_min);
             }
         }
     }
