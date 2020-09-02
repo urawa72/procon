@@ -1,22 +1,24 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define rep(i, n) REP(i, 0, n)
-#define REP(i, x, n) for (int i = x; i < n; i++)
-#define OP(x) cout << x << endl;
+#define ALL(v) v.begin(), v.end()
+#define V vector
+#define P pair
+using ll = long long;
+
 
 int main() {
-    int n;
-    cin >> n;
-
+    int n; cin >> n;
     int ans = 0;
-    REP(i, 1, n + 1){
+    for(int i = 1; i <= n; i++){
         if(i % 2 == 0) continue;
         int cnt = 0;
-        REP(j, 1, i + 1){
+        for(int j = 1; j <= i; j++){
             if(i % j == 0) cnt++;
         }
         if(cnt == 8) ans++;
     }
-    OP(ans);
+    cout << ans << endl;
+
+    return 0;
 }
