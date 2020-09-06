@@ -8,8 +8,9 @@ using ll = long long;
 
 
 int main() {
-    int a, b, c, d; cin >> a >> b >> c >> d;
-    cout << min(a, b) + min(c, d) << endl;
+    int a, b, c; cin >> a >> b >> c;
+    if(c <= a + b) cout << "Yes" << endl;
+    else cout << "No" << endl;
 
     return 0;
 }
