@@ -9,23 +9,25 @@ using ll = long long;
 
 int main() {
     int n; cin >> n;
-    V<ll> a(n);
-    for(int i = 0; i < n; i++) cin >> a[i];
 
-    V<ll> b(n + 1);
-    for(int i = 1; i < n; i++){
-        b[i + 1] = a[i] * a[i] + b[i];
-    }
-    V<ll> c(n + 1);
-    for(int i = 1; i < n; i++){
-        c[i + 1] = a[i] * 2 + c[i];
-    }
-
-    ll ans = 0;
+    // mapでAの登場回数をカウントする
+    map<int, int> mp;
     for(int i = 0; i < n; i++){
-        ans += (n - i - 1) * a[i] * a[i];
-        ans -= a[i] * (c[n] - c[i + 1]);
-        ans += b[n] - b[i + 1];
+        int a; cin >> a;
+        mp[a]++;
+    }
+
+    // 差分の2乗 * その差分となるAの組み合わせ数
+    // Aの組み合わせ数は最大400*400程度
+    ll ans = 0;
+    for(auto p1 : mp){
+        for(auto p2 : mp){
+            // 4-2,2-4と順番が違うだけの場合は同じ組み合わせなので除外する
+            // 全通り計算して2で割ってもOK
+            if(p1.first > p2.first) continue;
+            if(p1.first == p2.first) continue;
+            ans += pow(p2.first - p1.first, 2) * p1.second * p2.second;
+        }
     }
     cout << ans << endl;
 
