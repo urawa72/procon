@@ -14,6 +14,8 @@ int main() {
 
      int mi = 1e9, ma = -1;
      for(int i = 1; i <= 1000000; i++){
+         // a * 個数 <= w <= b * 個数の時、
+         // この個数で必ずwを作れる
          if(a * i <= w && w <= b * i){
              mi = min(mi, i);
              ma = max(ma, i);
