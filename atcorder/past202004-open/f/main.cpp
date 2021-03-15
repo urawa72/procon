@@ -10,29 +10,23 @@ using ll = long long;
 
 int main() {
     int n; cin >> n;
-    V<P<int, int> > v(n);
+    V<V<int> > v(n + 1);
     for(int i = 0; i < n; i++){
         int a, b; cin >> a >> b;
-        v[i] = make_pair(a, b);
+        v[a].push_back(b);
     }
 
-    sort(ALL(v));
-
+    ll sum = 0;
     priority_queue<int> q;
-    for(auto p : v) {
-        q.push(p.second);
-    }
-
-    V<ll> sum(n + 1, 0);
-    for(int i = 0; i < n; i++){
+    for(int i = 1; i <= n; i++){
+        for(auto w : v[i]){
+            q.push(w);
+        }
         ll tmp = q.top();
         q.pop();
-        sum[i + 1] = sum[i] + tmp;
+        sum += tmp;
+        cout << sum << endl;
     }
-    //
-    // for(int i = 1; i <= n; i++){
-    //     cout << sum[i] << endl;
-    // }
 
     return 0;
 }
