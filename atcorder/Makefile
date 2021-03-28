@@ -16,4 +16,4 @@ download:
 		cd - > /dev/null; \
 	done;
 
-.PHONY: create
+.PHONY: create download
