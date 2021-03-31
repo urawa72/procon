@@ -4,29 +4,21 @@ using namespace std;
 #define ALL(v) v.begin(), v.end()
 #define V vector
 #define P pair
-#define ld long double
-#define ll long long
-#define mod 1000000007
-#define IINF INT_MAX
-#define INF 1LL << 30
+using ll = long long;
 
 
 int main() {
     int n, m; cin >> n >> m;
-    V<int> l(m), r(m);
-    for(int i = 0; i < m; i++) cin >> l[i] >> r[i];
-
-    sort(ALL(l));
-    sort(ALL(r));
-
-    int ans = 0;
-    for(int i = 1; i <= n; i++){
-        if(l[m - 1] <= i && i <= r[0]){
-            ans++;
-        }
+    int mi = 100000, ma = 0;
+    for(int i = 0; i < m; i++){
+        int l, r; cin >> l >> r;
+        ma = max(ma, l);
+        mi = min(mi, r);
     }
-    cout << ans << endl;
 
+    int x = mi - ma;
+    if(x < 0) cout << 0 << endl;
+    else cout << x + 1 << endl;
 
     return 0;
 }

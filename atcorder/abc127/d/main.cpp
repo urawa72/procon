@@ -1,41 +1,45 @@
 #include <bits/stdc++.h>
+#include <functional>
+#include <queue>
 using namespace std;
 
 #define ALL(v) v.begin(), v.end()
 #define V vector
 #define P pair
-#define ld long double
-#define ll long long
-#define mod 1000000007
-#define IINF INT_MAX
-#define INF 1LL << 30
+using ll = long long;
 
 
 int main() {
     int n, m; cin >> n >> m;
 
-    // priority_queue
-    priority_queue<P<ll, ll> > q;
+    map<ll, ll> mp;
+    priority_queue<int> q;
     for(int i = 0; i < n; i++){
         ll a; cin >> a;
-        q.push({a, 1});
+        mp[a]++;
+        q.push(a);
     }
+
     for(int i = 0; i < m; i++){
         ll b, c; cin >> b >> c;
-        q.push({c, b});
+        mp[c] += b;
+        q.push(c);
     }
 
     ll ans = 0;
-    for(int i = 0; i < n; i++){
-        auto p = q.top();
+    while(!q.empty()){
+        ll t = q.top();
         q.pop();
-        ans += p.first;
-        if(p.second > 1){
-            p.second--;
-            q.push(p);
+        if(mp[t] == 0) continue;
+        if(0 <= n - mp[t]){
+            ans += t * mp[t];
+            n -= mp[t];
+            mp[t] = 0;
+        }else{
+            ans += t * n;
+            break;
         }
     }
-
     cout << ans << endl;
 
     return 0;

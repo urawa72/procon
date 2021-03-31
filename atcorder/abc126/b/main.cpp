@@ -4,30 +4,30 @@ using namespace std;
 #define ALL(v) v.begin(), v.end()
 #define V vector
 #define P pair
-#define ld long double
-#define ll long long
-#define mod 1000000007
-#define IINF INT_MAX
-#define INF 1LL << 30
+using ll = long long;
 
 
 int main() {
-    int s; cin >> s;
-    int a = s / 100;
-    int b = s % 100;
+    string s; cin >> s;
+    int a = stoi(s.substr(0, 2));
+    int b = stoi(s.substr(2, 2));
 
-    if(0 < a && a <= 12){
-        if(0 < b && b <= 12){
-            cout << "AMBIGUOUS" << endl;
-        }else{
-            cout << "MMYY" << endl;
-        }
-    }else{
-        if(0 < b && b <= 12){
+    if(13 <= a || a == 0){
+        if(1 <= b && b <= 12){
             cout << "YYMM" << endl;
         }else{
             cout << "NA" << endl;
         }
+    }else if(1 <= a && a <= 12){
+        if(1 <= b && b <= 12){
+            cout << "AMBIGUOUS" << endl;
+        }else if(13 <= b || b == 0){
+            cout << "MMYY" << endl;
+        }else{
+            cout << "NA" << endl;
+        }
+    }else{
+        cout << "NA" << endl;
     }
 
     return 0;

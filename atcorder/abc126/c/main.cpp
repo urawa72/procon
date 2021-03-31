@@ -1,36 +1,33 @@
 #include <bits/stdc++.h>
-#include <iomanip>
 using namespace std;
 
 #define ALL(v) v.begin(), v.end()
 #define V vector
 #define P pair
-#define ld long double
-#define ll long long
-#define mod 1000000007
-#define IINF INT_MAX
-#define INF 1LL << 30
+using ll = long long;
 
 
 int main() {
-    ld n, k; cin >> n >> k;
+    ll n, k; cin >> n >> k;
 
-    ld ans = 0;
-    V<ld> v(n);
+    V<ll> v(n + 1);
     for(int i = 1; i <= n; i++){
-        ll t = i, cnt = 0;
-        if(t < k){
-            while(1){
-                t *= 2;
-                cnt++;
-                if(k <= t) break;
-            }
-            ans += (1 / (ld)(pow(2, cnt) * n));
-        }else{
-            ans += (1 / n);
+        int cnt = 0;
+        ll sum = i;
+        while(sum < k){
+            sum *= 2;
+            cnt++;
         }
+        v[i] = pow(2, cnt);
     }
-    cout << setprecision(15) << ans << endl;
+
+    double ans = 0;
+    double d = (double)1 / n;
+    for(int i = 1; i <= n; i++){
+        double c = (double)1 / v[i];
+        ans += (d * c);
+    }
+    printf("%.12f\n", ans);
 
     return 0;
 }

@@ -4,19 +4,16 @@ using namespace std;
 #define ALL(v) v.begin(), v.end()
 #define V vector
 #define P pair
-#define ld long double
-#define ll long long
-#define mod 1000000007
-#define IINF INT_MAX
-#define INF 1LL << 30
+using ll = long long;
 
 
 int main() {
     int r, d, x; cin >> r >> d >> x;
-    int ans = x;
-    for(int i = 1; i <= 10; i++){
-        ans = r * ans - d;
-        cout << ans << endl;
+
+    int pre = x;
+    for(int i = 0; i < 10; i++){
+        pre = r * pre - d;
+        cout << pre << endl;
     }
 
     return 0;
