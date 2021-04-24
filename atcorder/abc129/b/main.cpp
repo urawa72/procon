@@ -6,24 +6,25 @@ using namespace std;
 #define P pair
 using ll = long long;
 
+
 int main() {
-    int n;
-    cin >> n;
-    V<int> w(n);
-    for (int i = 0; i < n; i++) {
-        cin >> w[i];
-    }
+  int n; cin >> n;
+  V<int> w(n);
+  for (int i = 0; i < n; i++) {
+    cin >> w[i];
+  }
 
-    V<int> v(n + 1);
-    for (int i = 0; i < n; i++) {
-        v[i + 1] = w[i] + v[i];
-    }
+  V<int> x(n + 1);
+  for (int i = 0; i < n; i++) {
+    x[i + 1] = x[i] + w[i];
+  }
 
-    int ans = 1e9;
-    for (int i = 0; i < n; i++) {
-        int tmp = abs(v[i] - (v[n] - v[i]));
-        ans = min(ans, tmp);
-    }
-    cout << ans << endl;
-    return 0;
+  int ans = 1e9;
+  for (int i = 1; i <= n; i++) {
+    int t = abs(x[i] - (x[n] - x[i]));
+    ans = min(t, ans);
+  }
+  cout << ans << endl;
+
+  return 0;
 }

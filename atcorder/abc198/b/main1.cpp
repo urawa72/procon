@@ -10,17 +10,17 @@ using ll = long long;
 int main() {
   string n; cin >> n;
 
-  string u = n;
-  for (int i = 0; i < (int)n.length(); i++) {
-    string t = u;
+  for (int i = 0; i < 10; i++) {
+    string t = n;
     reverse(ALL(t));
-    if(t == u) {
+    if(n == t){
       cout << "Yes" << endl;
       return 0;
+    }else{
+      string s = "0" + n;
+      n = s;
     }
-    u = '0' + u;
   }
   cout << "No" << endl;
-
   return 0;
 }

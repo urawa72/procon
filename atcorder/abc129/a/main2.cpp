@@ -6,14 +6,10 @@ using namespace std;
 #define P pair
 using ll = long long;
 
-
 int main() {
-  int h, w; cin >> h >> w;
-  V<string> s(h);
-  for (int i = 0; i < h; i++) {
-    cin >> s[i];
-  }
+    int p, q, r;
+    cin >> p >> q >> r;
 
-
-  return 0;
+    cout << min({p + q, p + r, q + r}) << endl;
+    return 0;
 }
