@@ -4,33 +4,27 @@ using namespace std;
 #define ALL(v) v.begin(), v.end()
 #define V vector
 #define P pair
-#define ld long double
-#define ll long long
-#define mod 1000000007
-#define IINF INT_MAX
-#define INF 1LL << 30
-
+using ll = long long;
 
 int main() {
-    int n, l; cin >> n >> l;
+  int n, l;
+  cin >> n >> l;
+  V<int> v(n);
+  for (int i = 0; i < n; i++) {
+    v[i] = i + 1 + l - 1;
+  }
 
-    V<int> a(n);
-    int s = 0;
-    for(int i = 0; i < n; i++){
-        a[i] = l + i;
-        s += a[i];
+  int sum = accumulate(ALL(v), 0);
+
+  int ans = 0, c = 1e9;
+  for (int i = 0; i < n; i++) {
+    int tmp = sum - v[i];
+    if (abs(sum - tmp) < c) {
+      c = abs(sum - tmp);
+      ans = tmp;
     }
+  }
+  cout << ans << endl;
 
-    int x = IINF;
-    int ans = 0;
-    for(int i = 0; i < n; i++){
-        int t = s - a[i];
-        if(abs(s - t) < x){
-            x = abs(s - t);
-            ans = t;
-        }
-    }
-    cout << ans << endl;
-
-    return 0;
+  return 0;
 }
