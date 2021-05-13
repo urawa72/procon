@@ -8,8 +8,13 @@ using ll = long long;
 
 
 int main() {
-  int n, a, b; cin >> n >> a >> b;
-  cout << min(n * a, b) << endl;
+  string s; cin >> s;
+  int w; cin >> w;
+
+  for (int i = 0; i < (int)s.size(); i+=w) {
+    cout << s[i];
+  }
+  cout << '\n';
 
   return 0;
 }

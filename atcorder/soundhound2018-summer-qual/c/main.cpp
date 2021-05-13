@@ -8,8 +8,8 @@ using ll = long long;
 
 
 int main() {
-  int n, a, b; cin >> n >> a >> b;
-  cout << min(n * a, b) << endl;
+  int n, m, d; cin >> n >> m >> d;
+
 
   return 0;
 }

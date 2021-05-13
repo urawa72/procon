@@ -4,36 +4,31 @@ using namespace std;
 #define ALL(v) v.begin(), v.end()
 #define V vector
 #define P pair
-#define ld long double
-#define ll long long
-#define mod 1000000007
-#define IINF INT_MAX
-#define INF 1LL << 30
-
+using ll = long long;
 
 int main() {
-    int n, d; cin >> n >> d;
-    V<V<int> > v(n, V<int>(d));
-    for(int i = 0; i < n; i++){
-        for(int j = 0; j < d; j++){
-            cin >> v[i][j];
-        }
+  int n, d;
+  cin >> n >> d;
+  V<V<double>> v(n, V<double>(d));
+  for (int i = 0; i < n; i++) {
+    for (int j = 0; j < d; j++) {
+      cin >> v[i][j];
     }
+  }
 
-    int ans = 0;
-    for(int i = 0; i < n; i++){
-        for(int j = i + 1; j < n; j++){
-            int sq = 0;
-            for(int k = 0; k < d; k++){
-                int s = v[i][k] - v[j][k];
-                sq += s * s;
-            }
-            // 小数点切り捨てで1.99999...が2なのに1になる対策
-            int s = sqrt(sq) + 0.5;
-            if(s * s == sq) ans++;
-        }
+  int ans = 0;
+  for (int i = 0; i < n - 1; i++) {
+    for (int j = i + 1; j < n; j++) {
+      double tmp = 0;
+      for (int k = 0; k < d; k++) {
+        tmp += pow(v[j][k] - v[i][k], 2);
+      }
+      if ((int)sqrt(tmp) == ceil(sqrt(tmp))) {
+        ans++;
+      }
     }
-    cout << ans << endl;
+  }
+  cout << ans << endl;
 
-    return 0;
+  return 0;
 }

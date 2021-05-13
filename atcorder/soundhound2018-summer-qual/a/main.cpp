@@ -8,8 +8,10 @@ using ll = long long;
 
 
 int main() {
-  int n, a, b; cin >> n >> a >> b;
-  cout << min(n * a, b) << endl;
+  int a, b; cin >> a >> b;
+  if(a + b == 15) cout << '+' << endl;
+  else if(a * b == 15) cout << '*' << endl;
+  else cout << 'x' << endl;
 
   return 0;
 }
