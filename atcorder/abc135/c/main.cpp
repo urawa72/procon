@@ -4,32 +4,29 @@ using namespace std;
 #define ALL(v) v.begin(), v.end()
 #define V vector
 #define P pair
-#define ld long double
-#define ll long long
-#define mod 1000000007
-#define IINF INT_MAX
-#define INF 1LL << 30
+using ll = long long;
 
 
 int main() {
-    int n; cin >> n;
-    V<ll> a(n + 1), b(n);
-    for(int i = 0; i <= n; i++) cin >> a[i];
-    for(int i = 0; i < n; i++) cin >> b[i];
+  int n; cin >> n;
+  V<ll> a(n + 1), b(n);
+  for(auto &na : a) cin >> na;
+  for(auto &nb : b) cin >> nb;
 
-    ll ans = 0;
-    for(int i = 0; i < n; i++){
-        if(a[i] < b[i]){
-            int m = min((b[i] - a[i]), a[i + 1]);
-            ans += a[i];
-            ans += m;
-            a[i + 1] -= m;
-        }else{
-            ans += b[i];
-        }
-    }
+  ll ans = 0;
+  for (int i = 0; i < n; i++) {
+    ll cur = min(a[i], b[i]);
+    ans += cur;
+    a[i] -= cur;
+    b[i] -= cur;
 
-    cout << ans << endl;
+    ll next = min(a[i + 1], b[i]);
+    ans += next;
+    a[i + 1] -= next;
+    b[i] -= next;
+  }
 
-    return 0;
+  cout << ans << endl;
+
+  return 0;
 }
