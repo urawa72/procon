@@ -4,26 +4,21 @@ using namespace std;
 #define ALL(v) v.begin(), v.end()
 #define V vector
 #define P pair
-#define ld long double
-#define ll long long
-#define mod 1000000007
-#define IINF INT_MAX
-#define INF 1LL << 30
+using ll = long long;
 
 
 int main() {
-    int n; cin >> n;
-    V<P<int, int> > a(n);
-    for(int i = 0; i < n; i++){
-        int x; cin >> x;
-        a[i] = make_pair(x, i);
-    }
+  int n; cin >> n;
+  map<int, int> mp;
+  for (int i = 0; i < n; i++) {
+    int a; cin >> a;
+    mp[a] = i;
+  }
 
-    sort(ALL(a));
-    for(int i = 0; i < n; i++){
-        if(i != n -1) cout << a[i].second + 1 << ' ';
-        else cout << a[i].second + 1 << endl;
-    }
+  for(auto p : mp){
+    cout << p.second + 1 << ' ';
+  }
 
-    return 0;
+
+  return 0;
 }
