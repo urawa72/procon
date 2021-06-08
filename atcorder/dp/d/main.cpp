@@ -1,32 +1,34 @@
 #include <bits/stdc++.h>
-#include <vector>
 using namespace std;
 
-#define all(v) v.begin(), v.end()
-#define rep(i, n) for (int i = 0; i < n; i++)
-typedef long long ll;
+#define ALL(v) v.begin(), v.end()
+#define V vector
+#define P pair
+using ll = long long;
 
-// ナップサック問題
 int main() {
-    ll N, W; cin >> N >> W;
-    vector<ll> weight(N);
-    vector<ll> value(N);
-    for(int i = 0; i < N; i++){
-        cin >> weight[i] >> value[i];
-    }
+  ll N, W;
+  cin >> N >> W;
+  V<ll> w(N), v(N);
+  for (int i = 0; i < N; i++) {
+    cin >> w[i] >> v[i];
+  }
 
-    // dpテーブル初期化
-    vector<vector<ll> > dp(N + 1, vector<ll>(W + 1, 0));
-
-    // 配るDP
-    for(int i = 0; i < N; i++){
-        for(int w = 0; w <= W; w++){
-            if(w >= weight[i]){
-                dp[i + 1][w] = max(dp[i][w - weight[i]] + value[i], dp[i][w]);
-            }else{
-                dp[i + 1][w] = dp[i][w];
-            }
-        }
+  // 貰うDP
+  V<V<ll>> dp(N + 1, V<ll>(W + 1, 0));
+  for (int i = 0; i <= W; i++) {
+    if(w[0] <= i) dp[0][i] = v[0];
+  }
+  for (int i = 1; i < N; i++) {
+    for (int j = 0; j <= W; j++) {
+      if(w[i] <= j){
+        dp[i][j] = max(dp[i - 1][j - w[i]] + v[i], dp[i - 1][j]);
+      }else{
+        dp[i][j] = dp[i - 1][j];
+      }
     }
-    cout << dp[N][W] << endl;
+  }
+  cout << dp[N - 1][W] << endl;
+
+  return 0;
 }

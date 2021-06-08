@@ -5,22 +5,25 @@ using namespace std;
 #define V vector
 #define P pair
 using ll = long long;
-using ld = long double;
-const int MOD = 1e9+7;
-
 
 int main() {
-    int n; cin >> n;
-    V<int> h(n);
-    for(int i = 0; i < n; i++) cin >> h[i];
+  int n;
+  cin >> n;
+  vector<int> v(n);
+  for (int i = 0; i < n; i++) {
+    cin >> v[i];
+  }
 
-    V<int> dp(n + 1, 1e9);
-    dp[0] = 0;
-    for(int i = 1; i < n; i++){
-        dp[i] = min(dp[i], dp[i - 1] + abs(h[i] - h[i - 1]));
-        if(1 < i) dp[i] = min(dp[i], dp[i - 2] + abs(h[i] - h[i - 2]));
-    }
-    cout << dp[n - 1] << endl;
+  int dp[n + 10];
+  memset(dp, 0, sizeof(dp));
+  dp[0] = 0;
+  dp[1] = abs(v[1] - v[0]);
+  for (int i = 2; i < n; i++) {
+    dp[i] =
+        min(dp[i - 2] + abs(v[i] - v[i - 2]), dp[i - 1] + abs(v[i] - v[i - 1]));
+  }
 
-    return 0;
+  cout << dp[n - 1] << endl;
+
+  return 0;
 }
