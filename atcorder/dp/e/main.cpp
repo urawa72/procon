@@ -1,39 +1,43 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define all(v) v.begin(), v.end()
-#define rep(i, n) for (int i = 0; i < n; i++)
-template<typename T> T gcd(T a, T b) { return b ? gcd(b, a % b) : a; }
-template<typename T> T lcm(T a, T b) { return a / gcd(a, b) * b; }
-template<class T> void chmax(T& a, T b) { if(a < b) a = b; }
-template<class T> void chmin(T& a, T b) { if(a > b) a = b; }
-typedef long long ll;
-
-const ll INF = 1LL << 60;
-const ll MAX_N = 110;
-const ll MAX_V = 100100;
+#define ALL(v) v.begin(), v.end()
+#define V vector
+#define P pair
+using ll = long long;
+template <class T>
+void chmax(T& a, T b) {
+  if (a < b) a = b;
+}
+template <class T>
+void chmin(T& a, T b) {
+  if (a > b) a = b;
+}
 
 int main() {
-    ll N, W; cin >> N >> W;
-    vector<ll> weight(N);
-    vector<ll> value(N);
-    for(int i = 0; i < N; i++){
-        cin >> weight[i] >> value[i];
-    }
+  int N, W;
+  cin >> N >> W;
+  V<int> w(N), v(N);
+  for (int i = 0; i < N; i++) {
+    cin >> w[i] >> v[i];
+  }
 
-    vector<vector<ll> > dp(MAX_N, vector<ll>(MAX_V, INF));
-    dp[0][0] = 0;
-    for(ll i = 0; i < N; i++){
-        for(ll v = 0; v <= MAX_V; v++){
-            if(v - value[i] >= 0){
-                chmin(dp[i + 1][v], dp[i][v - value[i]] + weight[i]);
-            }
-            chmin(dp[i + 1][v], dp[i][v]);
-        }
+  V<V<int>> dp(N + 10, V<int>(N * 1020, INT_MAX / 2));
+  dp[0][0] = 0;
+  for (int i = 0; i < N; i++) {
+    for (int j = 0; j <= N * 1010; j++) {
+      if(0 <= j - v[i]){
+        chmin(dp[i + 1][j], dp[i][j - v[i]] + w[i]);
+      }
+      chmin(dp[i + 1][j], dp[i][j]);
     }
-    ll ans = 0;
-    for(int v = 0; v < MAX_V; v++){
-        if(dp[N][v] <= W) ans = v;
-    }
-    cout << ans << endl;
+  }
+
+  int ans = 0;
+  for (int i = 0; i <= N * 1010; i++) {
+    if (dp[N][i] <= W) ans = i;
+  }
+  cout << ans << endl;
+
+  return 0;
 }
