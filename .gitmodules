@@ -1,6 +1,3 @@
 [submodule "lib"]
 	path = lib
 	url = https://github.com/urawa72/comprolib
-[submodule "comprolib"]
-	path = comprolib
-	url = https://github.com/urawa72/comprolib
